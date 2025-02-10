@@ -27,11 +27,11 @@ $disallowed_ext = array(
 
 
 if (isset($_POST["upload"])) {
-$image = $_FILES['image']; if ($image['error'] !== UPLOAD_ERR_OK) { die('yuuuge fail'); }
+    if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
         die("yuuuge fail");
     }
 
-    $tmp_name = $_FILES["image"]["tmp_name"];
+$image = $_FILES['image']; if ($image['error'] !== UPLOAD_ERR_OK) { die('yuuuge fail'); }
     $name = $_FILES["image"]["name"];
     $parts = explode(".", $name);
     $ext = array_pop($parts);
