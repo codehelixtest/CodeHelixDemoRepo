@@ -1,4 +1,4 @@
-<?php require_once("../common/header.php"); ?>
+<?php     include("../common/header.php");   ?>
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php  hint("will exec 'whois' with the arg specified in the POST parameter \"domain\""); ?>
 
@@ -8,6 +8,9 @@
 
 <pre>
 <?php
-    system("whois " . $_POST["domain"]);
+<?php
+    $domain = escapeshellarg($_POST['domain']);
+    system('whois ' . $domain);
+?>
  ?>
 </pre>
