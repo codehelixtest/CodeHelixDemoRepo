@@ -1,4 +1,7 @@
-<!-- from http://hakipedia.com/index.php/Local_File_Inclusion -->
+<?php
+// from http://hakipedia.com/index.php/Local_File_Inclusion
+include("../common/header.php");
+?>
 <?php     include("../common/header.php");   ?>
 
 <?php hint("will include the arg specified in the GET parameter \"file\", strips prepended \"../\" strings, must encode / with %2f"); ?>
@@ -16,16 +19,6 @@
    }
    else
    {
-<?php
-   $file = str_replace('../', '', $_GET['file']);
-   if(isset($file))
-   {
-       include_once("pages/$file");
-   }
-   else
-   {
-       include_once("index.php");
-   }
-?>
+       include("index.php");
    }
 ?>
