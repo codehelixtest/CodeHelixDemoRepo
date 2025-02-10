@@ -12,8 +12,8 @@ class Template {
         // Default twig setup, simulate loading
         // index.html file from disk
         $loader = new Twig\Loader\ArrayLoader([
-$nextSlide = filter_var($_GET['nextSlide'], FILTER_SANITIZE_URL);
-        ]);
+            'index.html' => $indexTemplate
+Consider moving the inline HTML to a separate template file to enhance security and maintainability.
         $this->twig = new Twig\Environment($loader);
     }
 
