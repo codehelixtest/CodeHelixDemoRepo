@@ -9,8 +9,24 @@ class warm {
     system("ls " . $this->dir);
   }
 }
-$data = isset($argv[1]) ? unserialize($argv[1]) : null; if ($data instanceof warm) { /* safe usage */ } else { /* handle error */ }
+$test = new warm();
+$test = new warm();
 $a = serialize($test);
+echo "Example of an object:
+$a
+
+";
+if (isset($argv[1])) {
+    $input = $argv[1];
+    // Validate or sanitize $input before unserializing
+    // Example: check if it matches expected format or is from a trusted source
+    if (isValidSerializedData($input)) {
+        unserialize($input);
+    } else {
+        echo "Invalid input data.
+";
+    }
+}
 echo "Example of an object:\n$a\n\n";
 unserialize($argv[1]);
 ?>
