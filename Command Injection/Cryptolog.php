@@ -28,12 +28,12 @@ else if($opt=='check')
 else if($opt=='mount')
 {
   cLogshares::fMountFileshareOnly($dbConn,$lsid,$sharetype);
-function fTestFileshare($sharefolder) { $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder)); return trim($output); }
+  echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
 }
 
 function fTestFileshare($sharefolder)
 {
-  $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh '.$sharefolder);
+echo cLogshares::fTestFileshare('/mnt/logsource_'.$lsid.'_'.$sharetype);
   return trim($output);
 }
 ?>
