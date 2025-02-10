@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+include("config.php");
 require_once("kontrol.php");
 $opt=$_POST['opt'];
 $lsid=$_POST['lsid'];
@@ -12,7 +12,7 @@ $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$dbConn) die ("Out of service");
 mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
-include("classes/logshares_class.php");
+include_once('config.php'); require_once('kontrol.php');
 if($opt=='del')
 {
   cLogshares::fDeleteFileshareDB($dbConn,$lsid);
