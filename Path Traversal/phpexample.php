@@ -16,11 +16,13 @@ if (!is_file($path))
 
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: public');
-header('Content-Disposition: inline; filename="' . basename($path) . '";');
+$file = basename($_GET['file']); // Use basename to prevent path traversal
+$path = $UploadDir . $file;
+if (!is_file($path)) die(); // Ensure the file exists and is a file
 header('Content-Transfer-Encoding: binary');
 header('Content-Length: ' . filesize($path));
 
-$file = basename($_GET['file']); // Use basename to prevent path traversal
+$handle = fopen($path, 'rb');
 
 do {
 $data = fread($handle, 8192);
