@@ -13,8 +13,8 @@
 			// No
 			$html .= '<pre>Your image was not uploaded.</pre>';
 		}
+		else {
 $html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-			// Yes!
 			$html .= "<pre>{$target_path} succesfully uploaded!</pre>";
 		}
 	}
