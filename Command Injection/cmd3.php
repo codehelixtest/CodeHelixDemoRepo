@@ -7,14 +7,12 @@ hint("will exec 'whois' with the arg specified in the GET parameter \"domain\"")
 
 <form action="/CMD-3/index.php" method="GET">
     Whois: <input type="text" name="domain">
-<?php
-    if (isset($_GET['domain'])) {
-        $domain = escapeshellarg($_GET['domain']);
-        system('/usr/bin/whois ' . $domain);
-    }
-?>
+</form>
 
-<pre>
+<?php
+    $domain = escapeshellarg($_GET['domain']);
+    system('/usr/bin/whois ' . $domain);
+?>
 <?php
     system("/usr/bin/whois " . $_GET["domain"]);
  ?>
