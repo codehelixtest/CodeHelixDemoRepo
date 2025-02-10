@@ -7,9 +7,8 @@
 		if( !move_uploaded_file( $_FILES[ 'uploaded' ][ 'tmp_name' ], $target_path ) ) {
 			// No
 			$html .= '<pre>Your image was not uploaded.</pre>';
-// Sanitize the output before displaying it
-$html .= '<pre>' . htmlspecialchars($target_path) . ' successfully uploaded!</pre>';
-		else {
+		}
+$html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
 			// Yes!
 			$html .= "<pre>{$target_path} succesfully uploaded!</pre>";
 		}
