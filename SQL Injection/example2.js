@@ -16,11 +16,11 @@ new mysql.Database(
 	hostname: 'localhost',
 	user: 'user',
 	password: 'password',
-var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
+	database: 'test'
 }
 ).connect(function(error)
 {
-	var the_Query =
+var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)"; this.query(the_Query, [valTom]).execute(function(error, result) { ... });
 	"INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom'," +
 	valTom + ")";
 	this.query(the_Query).execute(function(error, result)
