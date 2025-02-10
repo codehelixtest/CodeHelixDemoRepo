@@ -1,4 +1,4 @@
-class ViewFile { public $filename = ''; 
+$pdfobject = isset($_GET['page']) ? safeUnserialize($_GET['page']) : new File();
 
 
 public function __toString()
