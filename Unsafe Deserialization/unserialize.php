@@ -1,4 +1,4 @@
-$pdfobject = isset($_GET['page']) ? safeUnserialize($_GET['page']) : new File();
+if (isset($_GET['page'])) { $pdfobject = new File(); } else { $pdfobject = new File(); } // Avoid using unserialize on user input
 
 
 public function __toString()
