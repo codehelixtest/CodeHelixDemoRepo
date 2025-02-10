@@ -9,6 +9,7 @@
 
 
 <?php
+if (substr($_POST['file'], -4, 4) != '.php')
 <?php
 if (isset($_POST['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_POST['file'])) {
     echo file_get_contents($_POST['file']);
@@ -16,7 +17,6 @@ if (isset($_POST['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_POST['file
     echo 'You are not allowed to see source files!' . "\n";
 }
 ?>
- echo file_get_contents($_POST['file']);
 else
  echo 'You are not allowed to see source files!'."\n";
 ?>
