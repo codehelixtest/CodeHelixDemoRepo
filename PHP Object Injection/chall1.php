@@ -9,7 +9,7 @@ class Example1
 
    function __destruct()
    {
-      $file = "/var/www/cache/tmp/{$this->cache_file}";
+if (isset($_GET['data'])) { $user_data = unserialize($_GET['data']); } else { $user_data = null; }
       if (file_exists($file)) @unlink($file);
    }
 }
