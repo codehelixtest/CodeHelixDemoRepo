@@ -9,14 +9,7 @@
 </form>
 
 <?php
-<?php
-$file = basename($_GET['file']);
-if (isset($file)) {
-    include("pages/$file");
-} else {
-    include("index.php");
-}
-?>
+<?php include('../common/header.php'); ?>
    if(isset($file))
    {
        include("pages/$file");
