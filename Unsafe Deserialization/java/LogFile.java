@@ -5,7 +5,23 @@ class LogFile implements Serializable
    public String filename;
    public String filecontent;
 
-  // Function called during deserialization
+private void readObject(ObjectInputStream in) {
+    System.out.println("readObject from LogFile");
+    try {
+        in.defaultReadObject();
+        // Validate filename and filecontent before using them
+        if (isValidFilename(filename) && isValidFileContent(filecontent)) {
+            System.out.println("Restoring log data to file...");
+            try (BufferedWriter out = new BufferedWriter(new FileWriter(filename))) {
+                out.write(filecontent);
+            }
+        } else {
+            System.out.println("Invalid filename or file content.");
+        }
+    } catch (Exception e) {
+        System.out.println("Exception: " + e.toString());
+    }
+}
 
   private void readObject(ObjectInputStream in)
   {
@@ -30,33 +46,7 @@ class LogFile implements Serializable
         out.close();
         file.close();
      }
-private void readObject(ObjectInputStream in) {
-    System.out.println("readObject from LogFile");
-    try {
-        in.defaultReadObject();
-        if (filename == null || filename.isEmpty()) {
-            throw new IllegalArgumentException("Filename cannot be null or empty");
-        }
-        // Validate filename to prevent path traversal
-        if (!isValidFileName(filename)) {
-            throw new SecurityException("Invalid filename");
-        }
-        System.out.println("File name: " + filename + ", file content: \n" + filecontent);
-        FileWriter file = new FileWriter(filename);
-        BufferedWriter out = new BufferedWriter(file);
-        System.out.println("Restoring log data to file...");
-        out.write(filecontent);
-        out.close();
-        file.close();
-    } catch (Exception e) {
-        System.out.println("Exception: " + e.toString());
-    }
-}
-
-private boolean isValidFileName(String filename) {
-    // Implement validation logic to prevent path traversal
-    return !filename.contains("..") && filename.matches("^[a-zA-Z0-9._-]+$");
-}
+     catch (Exception e)
      {
          System.out.println("Exception: " + e.toString());
      }
