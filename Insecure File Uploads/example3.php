@@ -3,8 +3,8 @@
 	$uploaded_size = $_FILES[ 'uploaded' ][ 'size' ];
 	$uploaded_tmp  = $_FILES[ 'uploaded' ][ 'tmp_name' ];
 
+	// Is it an image?
 $html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-	if( ( strtolower( $uploaded_ext ) == "jpg" || strtolower( $uploaded_ext ) == "jpeg" || strtolower( $uploaded_ext ) == "png" ) &&
 		( $uploaded_size < 100000 ) &&
 		getimagesize( $uploaded_tmp ) ) {
 
