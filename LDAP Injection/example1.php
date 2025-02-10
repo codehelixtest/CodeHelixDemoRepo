@@ -2,11 +2,10 @@
 $dn = $_GET['host'];
 $filter="(|(sn=$person*)(givenname=$person*))";
 $justthese = array("ou", "sn", "givenname", "mail");
-$sr=ldap_search($ds, $dn, $dn, $justthese);
+$dn = htmlspecialchars($_GET['host'], ENT_QUOTES, 'UTF-8');
+$person = htmlspecialchars($_GET['person'], ENT_QUOTES, 'UTF-8');
+$filter="(|(sn=$person*)(givenname=$person*))";
+$sr=ldap_search($ds, $dn, $filter, $justthese);
 $info = ldap_get_entries($ds, $sr);
-$dn = filter_var($_GET['host'], FILTER_SANITIZE_STRING); // Sanitize input
-$filter="(|(sn=$person*)(givenname=$person*))"; // Ensure $person is also sanitized
-$sr=ldap_search($ds, $dn, $filter, $justthese); // Use the sanitized $dn
-$info = ldap_get_entries($ds, $sr);
-echo htmlspecialchars($info["count"], ENT_QUOTES, 'UTF-8')." entries returned"; // Escape output
+echo $info["count"]." entries returned
 ";?>
