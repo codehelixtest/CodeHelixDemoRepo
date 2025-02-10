@@ -45,7 +45,7 @@ if (isset($_POST["upload"])) {
     }
 
     if (in_array($ext, $disallowed_ext, TRUE)) {
-if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { error_log('File upload error'); die('An error occurred during file upload. Please try again.'); }
+        die("lol nice try, but im not stupid dude...");
     }
 
     $image = file_get_contents($tmp_name);
@@ -54,7 +54,7 @@ if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { error_log('File upload error'
     }
 
     if (!exif_imagetype($tmp_name)) {
-        die("not an image.");
+if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { throw new Exception('File upload error.'); }
     }
 
     $image_size = getimagesize($tmp_name);
