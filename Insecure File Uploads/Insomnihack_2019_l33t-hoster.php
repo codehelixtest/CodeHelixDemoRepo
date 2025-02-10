@@ -9,7 +9,10 @@ if (!isset($_SESSION["home"])) {
 }
 $userdir = "images/{$_SESSION["home"]}/";
 if (!file_exists($userdir)) {
-    mkdir($userdir);
+$userdir = 'images/{$_SESSION['home']}/';
+if (!file_exists($userdir)) {
+    mkdir($userdir, 0700); // Set permissions to allow only the owner to read/write
+}
 }
 
 $disallowed_ext = array(
@@ -79,4 +82,4 @@ echo "</ul>";
     <input type="file" name="image">
     <input type="submit" name=upload>
 </form>
-echo "<h3>Your <a href='" . htmlspecialchars($userdir) . "'>files</a>:</h3><ul>"; foreach(glob($userdir . '*') as $file) { echo "<li><a href='" . htmlspecialchars($file) . "'>" . htmlspecialchars($file) . "</a></li>"; } echo "</ul>";
+<!-- /?source -->
