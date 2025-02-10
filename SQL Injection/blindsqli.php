@@ -16,7 +16,7 @@ if (strlen($_GET['id']) < 1) {
   // responds with "Yes!" or "No!"
   $count = $db->querySingle('select count(*) from secrets where id = ' . $_GET['id']);
 
-  if ($count > 0) {
+$count = $db->querySingle('select count(*) from secrets where id = ' . intval($_GET['id']));
     echo 'Yes!';
   } else {
     echo 'No!';
