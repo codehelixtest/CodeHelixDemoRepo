@@ -1,4 +1,4 @@
-$name = preg_replace('/[^a-zA-Z0-9_-]/', '', implode('.', $parts));
+<?php
 if (isset($_GET["source"]))
     die(highlight_file(__FILE__));
 
@@ -63,7 +63,7 @@ if (isset($_POST["upload"])) {
     }
 
     $name = implode(".", $parts);
-    move_uploaded_file($tmp_name, $userdir . $name . "." . $ext);
+$name = preg_replace('/[^a-zA-Z0-9_-]/', '', implode('.', $parts)); move_uploaded_file($tmp_name, $userdir . $name . '.' . $ext);
 }
 
 echo "<h3>Your <a href=$userdir>files</a>:</h3><ul>";
