@@ -11,8 +11,8 @@ $one = new login();
 $a = serialize($one);
 echo "Example of an object:\n$a\n\n";
 echo "FLAG: \n";
-$test = unserialize($argv[1]); // Avoid using unserialize on untrusted input
-$check = $test->role - 1337;
+$test = unserialize($argv[1]);
+$test = unserialize($argv[1]); if (!($test instanceof login)) { die('Invalid object'); }
 if ($check == "ADMIN") {
   $flag = file_get_contents("flag.txt");
   echo $flag;
