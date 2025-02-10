@@ -9,8 +9,8 @@ class Template {
             'src="https://loremflickr.com/320/240">' .
             '<a href="{{link|escape}}">Next slide »</a>';
 
-$nextSlide = filter_var($_GET['nextSlide'], FILTER_VALIDATE_URL); if ($nextSlide === false) { $nextSlide = '#'; } // Default to a safe value if invalid
-        // index.html file from disk
+        // Default twig setup, simulate loading
+private function getNexSlideUrl() { $nextSlide = $_GET['nextSlide']; return htmlspecialchars(filter_var($nextSlide, FILTER_VALIDATE_URL), ENT_QUOTES, 'UTF-8'); }
         $loader = new Twig\Loader\ArrayLoader([
             'index.html' => $indexTemplate
         ]);
