@@ -18,9 +18,9 @@ header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: public');
 header('Content-Disposition: inline; filename="' . basename($path) . '";');
 header('Content-Transfer-Encoding: binary');
-do { $data = fread($handle, 8192); if (strlen($data) == 0) { break; } echo($data); } while (true);
+header('Content-Length: ' . filesize($path));
 
-$handle = fopen($path, 'rb');
+header('Content-Transfer-Encoding: binary');
 
 do {
 $data = fread($handle, 8192);
