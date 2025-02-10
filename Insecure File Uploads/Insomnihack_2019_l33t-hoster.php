@@ -7,7 +7,7 @@ session_start();
 if (!isset($_SESSION["home"])) {
     $_SESSION["home"] = bin2hex(random_bytes(20));
 }
-$source = filter_input(INPUT_GET, 'source', FILTER_SANITIZE_STRING); if ($source) die(highlight_file(__FILE__));
+$userdir = "images/{$_SESSION["home"]}/";
 if (!file_exists($userdir)) {
     mkdir($userdir);
 }
@@ -26,7 +26,7 @@ $disallowed_ext = array(
 );
 
 
-if (isset($_POST["upload"])) {
+$image = $_FILES['image']; if (isset($image) && $image['error'] === UPLOAD_ERR_OK) { ... }
     if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
         die("yuuuge fail");
     }
