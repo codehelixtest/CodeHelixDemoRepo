@@ -8,5 +8,13 @@
 </form>
 
 <?php
-<?php include_once($_GET['page']); ?>
+<?php
+$allowed_pages = ['home.php', 'about.php'];
+$page = $_GET['page'];
+if (in_array($page, $allowed_pages)) {
+    include($page);
+} else {
+    echo 'Invalid page.';
+}
+?>
 ?>
