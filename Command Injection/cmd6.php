@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+<?php require_once('../common/header.php'); ?>
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php  hint("not everything you need to inject is in a text input field ..."); ?>
 
