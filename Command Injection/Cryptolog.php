@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+require_once('config.php');
 require_once("kontrol.php");
 $opt=$_POST['opt'];
 $lsid=$_POST['lsid'];
@@ -11,11 +11,7 @@ $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$dbConn) die ("Out of service");
-function fTestFileshare($sharefolder) {
-  $sharefolder = escapeshellarg($sharefolder);
-  $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . $sharefolder);
-  return trim($output);
-}
+mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
 include("classes/logshares_class.php");
 if($opt=='del')
 {
