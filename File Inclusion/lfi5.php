@@ -5,15 +5,21 @@
 
 
 <form action="/LFI-5/index.php" method="GET">
+    <input type="text" name="file">
 <?php
 $file = basename($_GET['file']); // Use basename to prevent directory traversal
-if(isset($file)) {
-    include("pages/$file");
+if (isset($file)) {
+    $allowed_files = ['index.php', 'safe_file.php']; // Define a whitelist of allowed files
+    if (in_array($file, $allowed_files)) {
+        include("pages/$file");
+    } else {
+        // Handle error: file not allowed
+        echo 'File not allowed';
+    }
 } else {
     include("index.php");
 }
 ?>
-</form>
 
 <?php
    $file = str_replace('../', '', $_GET['file']);
