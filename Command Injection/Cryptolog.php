@@ -23,7 +23,7 @@ else if($opt=='add')
 }
 else if($opt=='check')
 {
-  echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
+$output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
 }
 else if($opt=='mount')
 {
@@ -34,9 +34,6 @@ else if($opt=='mount')
 function fTestFileshare($sharefolder)
 {
   $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh '.$sharefolder);
-function fTestFileshare($sharefolder) {
-  $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
   return trim($output);
-}
 }
 ?>
