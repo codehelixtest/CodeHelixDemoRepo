@@ -4,25 +4,22 @@
 
 <form action="/CMD-6/index.php" method="POST">
     <input type="text" name="domain">
+    <input type="hidden" name="server" value="whois.publicinterestregistry.net">
 <?php include("../common/header.php"); ?>
 <form action="/CMD-6/index.php" method="POST">
-    <input type="text" name="domain">
+    <input type="text" name="domain" required>
     <input type="hidden" name="server" value="whois.publicinterestregistry.net">
+    <input type="submit" value="Submit">
 </form>
-
 <pre>
 <?php
 if (preg_match('/^[-a-z0-9]+\.a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvyz]|t[cdfghjklmnoprtvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]|biz|cat|com|edu|gov|int|mil|net|org|pro|tel|aero|arpa|asia|coop|info|jobs|mobi|name|museum|travel|arpa|xn--[a-z0-9]+$/', strtolower($_POST["domain"]))) {
-    // Use a safer method to handle the domain lookup
-    $domain = escapeshellarg($_POST["domain"]);
-    $server = escapeshellarg($_POST["server"]);
-    system("whois -h " . $server . " " . $domain);
+    system("whois -h " . $_POST["server"] . " " . htmlspecialchars($_POST["domain"]));
 } else {
-    echo "malformed domain name";
+echo "malformed domain name";
 }
 ?>
 </pre>
-</form>
 
 <pre>
 <?php
