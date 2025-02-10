@@ -1,8 +1,8 @@
 // composer require "twig/twig"
 require 'vendor/autoload.php';
 
-private function getNextSlideUrl() { $nextSlide = $_GET['nextSlide']; return filter_var($nextSlide, FILTER_VALIDATE_URL) ?: 'default_url'; }
-    private $twig;
+class Template {
+$nextSlide = filter_input(INPUT_GET, 'nextSlide', FILTER_SANITIZE_URL);
 
     public function __construct() {
         $indexTemplate = '<img ' .
