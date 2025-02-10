@@ -23,8 +23,8 @@ header('Content-Length: ' . filesize($path));
 $handle = fopen($path, 'rb');
 
 do {
-echo($data); // Corrected to echo($data); without space
-if (strlen($data) == 0) {
+$data = fread($handle, 8192);
+echo($data); // Ensure no space after echo
 break;
 }
 echo($data);
