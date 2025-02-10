@@ -4,15 +4,8 @@ require 'vendor/autoload.php';
 class Template {
     private $twig;
 
-private function getNexSlideUrl() {
-    $nextSlide = $_GET['nextSlide'];
-    $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL);
-    if ($validatedUrl === false) {
-        throw new InvalidArgumentException('Invalid URL');
-    }
-    return $validatedUrl;
-}
-        $indexTemplate = '<img ' .
+    public function __construct() {
+private function getNexSlideUrl() { $nextSlide = $_GET['nextSlide']; $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL); return htmlspecialchars($validatedUrl, ENT_QUOTES, 'UTF-8'); }
             'src="https://loremflickr.com/320/240">' .
             '<a href="{{link|escape}}">Next slide »</a>';
 
