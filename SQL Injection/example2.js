@@ -34,7 +34,7 @@ new mysql.Database(
 			console.log('GENERATED id: ' + result.id);
 		}
 	}
-var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)"; this.query(the_Query, [valTom]).execute(function(error, result) { ... });
-	out = resIn;
+	);
+var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query).execute([ 'Tom', valTom ], function(error, result) { ... });
 }
 );
