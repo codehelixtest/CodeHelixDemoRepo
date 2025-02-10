@@ -20,9 +20,9 @@ class Template {
     public function getNexSlideUrl() {
         $nextSlide = $_GET['nextSlide'];
         return filter_var($nextSlide, FILTER_VALIDATE_URL);
-Consider moving the inline HTML to a separate template file and ensure all variables are properly validated and sanitized before rendering.
+    }
 
-    public function render() {
+Consider moving the inline HTML to a separate template file and ensure all variables are properly validated and sanitized before rendering.
         echo $this->twig->render(
             'index.html',
             ['link' => $this->getNexSlideUrl()]
