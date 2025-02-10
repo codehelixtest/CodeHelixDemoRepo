@@ -23,8 +23,8 @@ new mysql.Database(
 	var the_Query =
 	"INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom'," +
 	valTom + ")";
-var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
-	{
+	this.query(the_Query).execute(function(error, result)
+var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query).execute([ 'Tom', valTom ], function(error, result) { ... });
 		if (error)
 		{
 			console.log("Error: " + error);
