@@ -17,7 +17,11 @@ router.post('/customers/register', async (req, res) => {
     
     let myobj = { name: req.body.name, address: req.body.address };
     customers.insertOne(myobj, function (err) {
-        if (err) throw err;
+const client = await MongoClient.connect(url, { useNewUrlParser: true });
+if (!client) {
+    console.log('Connection failed');
+    return res.json({ status: 'Error' });
+}
         console.log("user registered");
         res.json({ status:"success", "message": "user inserted" })
         db.close();
@@ -40,7 +44,7 @@ router.post('/customers/find', async (req, res) => {
     let name = req.body.name
     let myobj = { name: name };
     customers.findOne(myobj, function (err, result) {
-let myobj = { email: req.body.email, password: req.body.password }; // Consider using a library for input validation and sanitization before this line.
+        if (err) throw err;
         db.close();
         res.json(result)
     });
