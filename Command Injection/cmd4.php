@@ -3,6 +3,7 @@
 <?php  hint("will exec 'whois' with the arg specified in the POST parameter \"domain\""); ?>
 
 <form action="/CMD-4/index.php" method="POST">
+    <input type="text" name="domain">
 <?php include("../common/header.php"); ?>
 <form action="/CMD-4/index.php" method="POST">
     <input type="text" name="domain">
@@ -14,7 +15,6 @@
     system("whois " . $domain);
 ?>
 </pre>
-</form>
 
 <pre>
 <?php
