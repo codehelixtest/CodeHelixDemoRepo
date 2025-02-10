@@ -10,8 +10,8 @@ $user=$_POST['lsuser'];
 $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
-if (!$dbConn) { error_log('Database connection failed'); throw new Exception('Database connection error'); }
-mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
+if (!$dbConn) die ("Out of service");
+$dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS) or logError('Database connection failed');
 include("classes/logshares_class.php");
 if($opt=='del')
 {
