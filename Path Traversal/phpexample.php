@@ -4,14 +4,14 @@
 $UploadDir = '/var/www/';
 
 if (!(isset($_GET['file'])))
-if (!(isset($_GET['file']))) die();
+  die();
 
 
 $file = $_GET['file'];
 
 $path = $UploadDir . $file;
 
-if (!is_file($path))
+header('Content-Transfer-Encoding: binary');
   die();
 
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
