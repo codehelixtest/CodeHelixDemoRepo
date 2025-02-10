@@ -5,6 +5,7 @@
 
 <form action="/LFI-14/index.php" method="POST">
     <input type="text" name="file">
+    <input type="hidden" name="style" name="stylepath">
 <?php include('../common/header.php'); ?>
 
 <form action="/LFI-14/index.php" method="POST">
@@ -23,7 +24,6 @@
        include("index.php");
    }
 ?>
-</form>
 
 <?php
    $file = str_replace('../', '', $_POST['file']);
