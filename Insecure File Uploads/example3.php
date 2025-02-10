@@ -19,6 +19,5 @@
 		}
 	}
 	else {
-// Use a function to escape output before displaying it
-$html .= '<pre>' . htmlspecialchars('Your image was not uploaded.') . '</pre>';
-		$html .= '<pre>Your image was not uploaded. We can only accept JPEG or PNG images.</pre>'
+		// Invalid file
+$html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
