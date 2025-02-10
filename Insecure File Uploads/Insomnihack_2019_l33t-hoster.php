@@ -26,8 +26,8 @@ $disallowed_ext = array(
 );
 
 
-$image = $_FILES['image']; if (isset($image) && $image['error'] === UPLOAD_ERR_OK) { ... }
-    if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+if (isset($_POST["upload"])) {
+$image = $_FILES['image']; if ($image['error'] !== UPLOAD_ERR_OK) { die('yuuuge fail'); }
         die("yuuuge fail");
     }
 
