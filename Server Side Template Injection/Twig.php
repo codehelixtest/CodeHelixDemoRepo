@@ -10,8 +10,17 @@ class Template {
             '<a href="{{link|escape}}">Next slide »</a>';
 
         // Default twig setup, simulate loading
-private function getNexSlideUrl() { $nextSlide = $_GET['nextSlide']; return htmlspecialchars(filter_var($nextSlide, FILTER_VALIDATE_URL), ENT_QUOTES, 'UTF-8'); }
-        $loader = new Twig\Loader\ArrayLoader([
+        // index.html file from disk
+public function render() {
+    $link = $this->getNexSlideUrl();
+    if ($link === false) {
+        throw new InvalidArgumentException('Invalid URL');
+    }
+    echo $this->twig->render(
+        'index.html',
+        ['link' => $link]
+    );
+}
             'index.html' => $indexTemplate
         ]);
         $this->twig = new Twig\Environment($loader);
