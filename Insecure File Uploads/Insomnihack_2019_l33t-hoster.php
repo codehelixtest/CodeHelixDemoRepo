@@ -63,11 +63,11 @@ if (isset($_POST["upload"])) {
     }
 
     $name = implode(".", $parts);
-$name = preg_replace('/[^a-zA-Z0-9_-]/', '', implode('.', $parts)); move_uploaded_file($tmp_name, $userdir . $name . '.' . $ext);
+    move_uploaded_file($tmp_name, $userdir . $name . "." . $ext);
 }
 
 echo "<h3>Your <a href=$userdir>files</a>:</h3><ul>";
-foreach(glob($userdir . "*") as $file) {
+$name = preg_replace('/[^a-zA-Z0-9_-]/', '', implode('.', $parts));
     echo "<li><a href='$file'>$file</a></li>";
 }
 echo "</ul>";
