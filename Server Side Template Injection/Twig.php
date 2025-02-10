@@ -5,8 +5,8 @@ class Template {
     private $twig;
 
     public function __construct() {
-private function getNexSlideUrl() { $nextSlide = $_GET['nextSlide']; $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL); return htmlspecialchars($validatedUrl, ENT_QUOTES, 'UTF-8'); }
-            'src="https://loremflickr.com/320/240">' .
+        $indexTemplate = '<img ' .
+Consider moving the inline HTML to a separate template file to enhance security and maintainability.
             '<a href="{{link|escape}}">Next slide »</a>';
 
         // Default twig setup, simulate loading
