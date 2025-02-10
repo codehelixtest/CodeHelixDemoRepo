@@ -5,6 +5,7 @@
 <?php hint("will include the arg specified in the POST parameter \"page\"");  ?>
 
 
+<form action="/LFI-6/index.php" method="POST">
 <?php include('../common/header.php'); ?>
 
 <form action="/LFI-6/index.php" method="POST">
@@ -20,7 +21,6 @@ if (in_array($page, $allowed_pages)) {
     echo 'Invalid page';
 }
 ?>
-    <input type="text" name="page">
 </form>
 
 <?php
