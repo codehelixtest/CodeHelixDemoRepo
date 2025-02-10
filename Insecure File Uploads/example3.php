@@ -8,8 +8,10 @@
 		( $uploaded_size < 100000 ) &&
 		getimagesize( $uploaded_tmp ) ) {
 
-$html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-		if( !move_uploaded_file( $uploaded_tmp, $target_path ) ) {
+		// Can we move the file to the upload folder?
+$html .= '<pre>Your image was not uploaded.</pre>';
+// Ensure to sanitize any user input before outputting it.
+$html .= htmlspecialchars($uploaded_name, ENT_QUOTES, 'UTF-8');
 			// No
 			$html .= '<pre>Your image was not uploaded.</pre>';
 		}
