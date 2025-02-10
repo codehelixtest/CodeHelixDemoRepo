@@ -2,9 +2,7 @@
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php
-<?php
-    system('/usr/bin/whois ' . escapeshellarg($_GET['domain']));
-?>
+hint("will exec 'whois' with the arg specified in the GET parameter \"domain\"");
 ?>
 
 <form action="/CMD-3/index.php" method="GET">
@@ -13,6 +11,8 @@
 
 <pre>
 <?php
-    system("/usr/bin/whois " . $_GET["domain"]);
+<?php
+    system escapeshellcmd('/usr/bin/whois ' . $_GET['domain']);
+?>
  ?>
 </pre>
