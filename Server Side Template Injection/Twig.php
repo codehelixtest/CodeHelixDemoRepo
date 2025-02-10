@@ -1,4 +1,4 @@
-// composer require "twig/twig"
+Consider moving the inline HTML to a separate template file and ensure all variables are properly sanitized before rendering.
 require 'vendor/autoload.php';
 
 class Template {
