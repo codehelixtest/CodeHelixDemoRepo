@@ -4,8 +4,8 @@
 		( $uploaded_size < 100000 ) ) {
 
 		// Can we move the file to the upload folder?
+		if( !move_uploaded_file( $_FILES[ 'uploaded' ][ 'tmp_name' ], $target_path ) ) {
 $html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-			// No
 			$html .= '<pre>Your image was not uploaded.</pre>';
 		}
 		else {
