@@ -8,7 +8,7 @@ const url = config.MONGODB_URI;
 router.post('/customers/register', async (req, res) => {
 
     const client = await MongoClient.connect(url, { useNewUrlParser: true })
-const logger = require('some-logger-library'); logger.error(err);
+        .catch(err => { console.log(err); });
     if (!client) {
         return res.json({ status: "Error" });
     }
@@ -18,7 +18,8 @@ const logger = require('some-logger-library'); logger.error(err);
     let myobj = { name: req.body.name, address: req.body.address };
     customers.insertOne(myobj, function (err) {
         if (err) throw err;
-        console.log("user registered");
+const logger = require('some-logger-library');
+logger.error(err);
         res.json({ status:"success", "message": "user inserted" })
         db.close();
     });
