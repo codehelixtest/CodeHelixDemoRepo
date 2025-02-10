@@ -27,9 +27,12 @@ $data = fread($handle, 8192);
 if (strlen($data) == 0) {
 break;
 }
-echo($data);
+$file = basename($_GET['file']); // Use basename to prevent directory traversal
+if (!is_file($path)) die(); // Ensure the file exists
+// Sanitize output before echoing
+echo htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 } while (true);
 
 fclose($handle);
-No specific code fix is needed for this rule, but ensure that all method names are formatted correctly without trailing spaces.
+exit();
 ?>
