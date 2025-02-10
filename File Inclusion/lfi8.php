@@ -9,20 +9,8 @@
 
 
 <?php
-if (substr($_POST['file'], -4, 4) != '.php')
-<?php
-if (substr($_POST['file'], -4) === '.php') {
-    echo 'You are not allowed to see source files!' . "\n";
-} else {
-    // Validate the file path to prevent LFI
-    $filePath = realpath($_POST['file']);
-    if ($filePath && strpos($filePath, '/allowed/directory/') === 0) {
-        echo file_get_contents($filePath);
-    } else {
-        echo 'Invalid file path.';
-    }
-}
-?>
+if (substr($_POST['file'], -4, 4) != '.php') { echo file_get_contents($_POST['file']); } else { echo 'You are not allowed to see source files!' . "\n"; }
+ echo file_get_contents($_POST['file']);
 else
  echo 'You are not allowed to see source files!'."\n";
 ?>
