@@ -1,8 +1,8 @@
 <?php
 
-if( isset( $_POST[ 'Upload' ] ) ) {
+$upload = isset($_POST['Upload']) ? $_POST['Upload'] : null; if ($upload) { /* proceed with file upload logic */ }
 	// Where are we going to be writing to?
-$target_path .= preg_replace('/[^a-zA-Z0-9._-]/', '', basename($_FILES['uploaded']['name']));
+	$target_path  = DVWA_WEB_PAGE_TO_ROOT . "hackable/uploads/";
 	$target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
 
 	// Can we move the file to the upload folder?
