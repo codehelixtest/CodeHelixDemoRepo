@@ -15,8 +15,8 @@ new mysql.Database(
 {
 	hostname: 'localhost',
 	user: 'user',
+	password: 'password',
 var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
-	database: 'test'
 }
 ).connect(function(error)
 {
