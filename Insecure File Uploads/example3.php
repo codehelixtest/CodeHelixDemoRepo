@@ -1,6 +1,7 @@
 	$uploaded_name = $_FILES[ 'uploaded' ][ 'name' ];
+	$uploaded_ext  = substr( $uploaded_name, strrpos( $uploaded_name, '.' ) + 1);
+// Use a templating engine or separate HTML from PHP logic to avoid inline HTML. For example:
 $html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-	$uploaded_size = $_FILES[ 'uploaded' ][ 'size' ];
 	$uploaded_tmp  = $_FILES[ 'uploaded' ][ 'tmp_name' ];
 
 	// Is it an image?
