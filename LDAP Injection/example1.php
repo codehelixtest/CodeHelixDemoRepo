@@ -1,5 +1,5 @@
 <?php
-$dn = filter_input(INPUT_GET, 'host', FILTER_SANITIZE_STRING);
+$dn = $_GET['host'];
 $filter="(|(sn=$person*)(givenname=$person*))";
 $justthese = array("ou", "sn", "givenname", "mail");
 $sr=ldap_search($ds, $dn, $dn, $justthese);
