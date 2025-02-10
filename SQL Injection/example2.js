@@ -8,12 +8,12 @@ var req = http.request(options, function(res)
 	{
 		valTom = chunk;
 	}
-var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
+	);
 }
 );
 new mysql.Database(
 {
-	hostname: 'localhost',
+var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)", [valTom]; this.query(the_Query).execute(function(error, result) {
 	user: 'user',
 	password: 'password',
 	database: 'test'
