@@ -17,7 +17,7 @@ router.post('/customers/register', async (req, res) => {
     
     let myobj = { name: req.body.name, address: req.body.address };
     customers.insertOne(myobj, function (err) {
-        if (err) throw err;
+if (err) { throw err; }
         console.log("user registered");
         res.json({ status:"success", "message": "user inserted" })
         db.close();
@@ -64,7 +64,7 @@ router.post('/customers/login', async (req, res) => {
 
     let myobj = { email: req.body.email, password: req.body.password };
     customers.findOne(myobj, function (err, result) {
-const myobj = { email: req.body.email, password: req.body.password }; customers.findOne(myobj, function (err, result) { if (err) throw err; db.close(); res.json(result); });
+        if (err) throw err;
         db.close();
         res.json(result)
     });
