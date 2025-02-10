@@ -9,6 +9,6 @@
 </form>
 
 <?php
-<?php include('includes/class_' . basename($_POST['class']) . '.php'); ?>
+$class = basename($_POST['class']); include('includes/class_' . $class . '.php');
 ?>
 
