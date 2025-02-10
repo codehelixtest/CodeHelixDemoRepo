@@ -20,10 +20,10 @@ header('Content-Disposition: inline; filename="' . basename($path) . '";');
 header('Content-Transfer-Encoding: binary');
 header('Content-Length: ' . filesize($path));
 
-header('Content-Transfer-Encoding: binary');
+$handle = fopen($path, 'rb');
 
 do {
-$data = fread($handle, 8192);
+echo($data); // Corrected to echo($data); without space
 if (strlen($data) == 0) {
 break;
 }
