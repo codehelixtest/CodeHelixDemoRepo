@@ -13,8 +13,8 @@ class Template {
         // index.html file from disk
         $loader = new Twig\Loader\ArrayLoader([
             'index.html' => $indexTemplate
-Consider moving the inline HTML to a separate template file to enhance security and maintainability.
-        $this->twig = new Twig\Environment($loader);
+        ]);
+Consider moving the inline HTML to a separate template file to adhere to best practices and reduce the risk of security issues.
     }
 
     public function getNexSlideUrl() {
