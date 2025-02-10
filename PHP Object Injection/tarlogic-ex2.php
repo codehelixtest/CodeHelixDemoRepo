@@ -1,4 +1,4 @@
-tarlogic_ex2.php
+<?php
 // Exercise - 2
 // Author: @TheXC3LL
 // Website: Tarlogic.com
@@ -14,7 +14,7 @@ class File {
 class GiveFlag extends File {
   public $offset = 23;
   public function innocent() {
-    $stuff = fopen("flag.txt", "r");
+public function innocent() {
     fseek($stuff, $this->offset);
     print fread($stuff, filesize("flag.txt"));
   }
