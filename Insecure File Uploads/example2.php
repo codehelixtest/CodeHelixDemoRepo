@@ -15,6 +15,6 @@
 	}
 	else {
 		// Invalid file
-$html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-	}
+		$html .= '<pre>Your image was not uploaded. We can only accept JPEG or PNG images.</pre>';
+$html .= htmlspecialchars('<pre>' . $target_path . ' successfully uploaded!</pre>');
 }
