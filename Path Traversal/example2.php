@@ -1,8 +1,8 @@
 <?php
-$file = basename($_GET['file']); // Sanitize the filename
+$file = $_GET['file'];
+$file = basename($_GET['file']); // Sanitize input
 $content = $_GET['content'];
 file_put_contents('/some/path/' . $file, $content);
-$content = $_GET['content'];
 file_put_contents("/some/path/$file",$content);
 fclose($fh);
 ?>
