@@ -30,6 +30,6 @@ break;
 echo($data);
 } while (true);
 
-header('Content-Transfer-Encoding: binary');
-exit();
+fclose($handle);
+No specific code fix is needed for this rule, but ensure that all method names are formatted correctly without trailing spaces.
 ?>
