@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET["source"]))
+$source = filter_input(INPUT_GET, 'source', FILTER_SANITIZE_STRING); if ($source) die(highlight_file(__FILE__));
     die(highlight_file(__FILE__));
 
 session_start();
@@ -67,7 +67,7 @@ if (isset($_POST["upload"])) {
 }
 
 echo "<h3>Your <a href=$userdir>files</a>:</h3><ul>";
-$name = preg_replace('/[^a-zA-Z0-9_-]/', '', implode('.', $parts));
+foreach(glob($userdir . "*") as $file) {
     echo "<li><a href='$file'>$file</a></li>";
 }
 echo "</ul>";
