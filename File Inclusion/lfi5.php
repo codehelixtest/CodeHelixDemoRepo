@@ -4,6 +4,7 @@
 <?php hint("will include the arg specified in the GET parameter \"file\", strips prepended \"../\" strings, must encode / with %2f"); ?>
 
 
+<form action="/LFI-5/index.php" method="GET">
 <?php
 $file = basename($_GET['file']); // Use basename to prevent directory traversal
 if(isset($file)) {
@@ -12,7 +13,6 @@ if(isset($file)) {
     include("index.php");
 }
 ?>
-    <input type="text" name="file">
 </form>
 
 <?php
