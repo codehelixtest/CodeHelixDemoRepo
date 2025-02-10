@@ -4,21 +4,14 @@
 <?php hint("will include the arg specified in the GET parameter \"file\", looks for .php at end - bypass by apending /. (slash plus dot)"); ?>
 
 
-<?php include('../common/header.php'); ?>
-
 <form action="/LFI-3/index.php" method="GET">
-    <input type="text" name="file">
-</form>
-
 <?php
-$allowed_files = ['allowed_file1.php', 'allowed_file2.php']; // Define allowed files
-if (in_array($_GET['file'], $allowed_files)) {
+if (isset($_GET['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_GET['file'])) {
     echo file_get_contents($_GET['file']);
 } else {
-    echo 'You are not allowed to see source files!' . "\n";
+    echo 'Invalid file specified!';
 }
 ?>
-    <input type="text" name="file">
 </form>
 
 
