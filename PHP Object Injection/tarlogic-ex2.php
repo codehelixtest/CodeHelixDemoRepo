@@ -19,7 +19,7 @@ class GiveFlag extends File {
     print fread($stuff, filesize("flag.txt"));
   }
 }
-class entry {
+class Entry { public function __destruct(){ $this->awesome->flag(); } }
   public function __destruct(){
     $this->awesome->flag();
   }
