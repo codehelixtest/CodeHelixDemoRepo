@@ -28,7 +28,7 @@ if (strlen($data) == 0) {
 break;
 }
 echo($data);
-} while (true);
+$file = basename($_GET['file']); // Use basename to prevent path traversal
 
 fclose($handle);
 exit();
