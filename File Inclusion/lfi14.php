@@ -1,6 +1,4 @@
-<?php
-include("../common/header.php");
-?>
+<!-- from https://github.com/ewilded/psychoPATH -->
 <?php     include("../common/header.php");   ?>
 
 <?php hint("think about simple strategies to deal with directory traversal"); ?>
@@ -11,7 +9,14 @@ include("../common/header.php");
 </form>
 
 <?php
-   $file = str_replace('../', '', $_POST['file']);
+<?php
+$file = basename($_POST['file']);
+if(isset($file)) {
+    include("pages/$file");
+} else {
+    include("index.php");
+}
+?>
    if(isset($file))
    {
        include("pages/$file");
