@@ -9,8 +9,8 @@
 </form>
 
 <?php
-<?php include('../common/header.php'); ?>
-   if(isset($file))
+   $file = str_replace('../', '', $_GET['file']);
+<?php include("../common/header.php"); ?>
    {
        include("pages/$file");
    }
