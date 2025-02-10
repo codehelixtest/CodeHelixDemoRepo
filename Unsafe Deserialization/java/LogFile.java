@@ -21,7 +21,25 @@ class LogFile implements Serializable
         // Do something useful with the data
         // Restore LogFile, write file content to file name
 
-        FileWriter file = new FileWriter(filename);
+private void readObject(ObjectInputStream in) {
+    System.out.println("readObject from LogFile");
+    try {
+        in.defaultReadObject();
+        // Validate filename and filecontent before using them
+        if (isValidFilename(filename) && isValidContent(filecontent)) {
+            FileWriter file = new FileWriter(filename);
+            BufferedWriter out = new BufferedWriter(file);
+            System.out.println("Restoring log data to file...");
+            out.write(filecontent);
+            out.close();
+            file.close();
+        } else {
+            System.out.println("Invalid filename or content.");
+        }
+    } catch (Exception e) {
+        System.out.println("Exception: " + e.toString());
+    }
+}
         BufferedWriter out = new BufferedWriter(file);
 
         System.out.println("Restoring log data to file...");
