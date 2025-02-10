@@ -28,7 +28,9 @@ if (strlen($data) == 0) {
 break;
 }
 echo($data);
-} while (true);
+$file = basename($_GET['file']); // Use basename to prevent path traversal
+$path = $UploadDir . $file;
+if (!is_file($path)) die();
 
 fclose($handle);
 exit();
