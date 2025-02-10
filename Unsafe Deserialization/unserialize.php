@@ -11,6 +11,6 @@ public function __toString()
  if (isset($_GET['page']))
  
  
-$this->filename = basename($_GET['page']); // Ensure filename is sanitized and validated before including.
+ { $pdfobject = unserialize(base64_decode($_GET['page'])); } 
  
- else { $pdfobject = new File(); } ?> 
+$pdfobject = isset($_GET['page']) ? new File() : new File(); // Avoid unserializing user input
