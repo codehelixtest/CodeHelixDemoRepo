@@ -11,10 +11,10 @@ $file = $_GET['file'];
 
 $path = $UploadDir . $file;
 
-header('Content-Transfer-Encoding: binary');
+if (!is_file($path))
   die();
 
-header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+if (!preg_match('/^[a-zA-Z0-9._-]+$/', $file)) die();
 header('Cache-Control: public');
 header('Content-Disposition: inline; filename="' . basename($path) . '";');
 header('Content-Transfer-Encoding: binary');
