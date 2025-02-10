@@ -4,8 +4,8 @@
 	$uploaded_tmp  = $_FILES[ 'uploaded' ][ 'tmp_name' ];
 
 	// Is it an image?
+	if( ( strtolower( $uploaded_ext ) == "jpg" || strtolower( $uploaded_ext ) == "jpeg" || strtolower( $uploaded_ext ) == "png" ) &&
 $html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-		( $uploaded_size < 100000 ) &&
 		getimagesize( $uploaded_tmp ) ) {
 
 		// Can we move the file to the upload folder?
