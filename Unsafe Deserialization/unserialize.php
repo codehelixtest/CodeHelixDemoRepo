@@ -8,9 +8,9 @@ public function __toString()
 
 
 
-if (isset($_GET['page'])) { $pdfobject = json_decode(base64_decode($_GET['page']), true); // Use a safer alternative to unserialize }
+ if (isset($_GET['page']))
  
  
- { $pdfobject = unserialize(base64_decode($_GET['page'])); } 
+$this->filename = basename($_GET['page']); // Ensure filename is sanitized and validated before including.
  
  else { $pdfobject = new File(); } ?> 
