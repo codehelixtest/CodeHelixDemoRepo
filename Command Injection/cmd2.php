@@ -1,11 +1,13 @@
 <?php     include("../common/header.php");   ?>
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
-<?php  hint("will exec the arg specified in the POST parameter \"cmd\""); ?>
+<?php
+    system(trim($_POST['cmd']));
+ ?>
 
 <form action="/CMD-2/index.php" method="POST">
     <input type="text" name="cmd">
 </form>
 
 <?php
-$cmd = escapeshellcmd($_POST['cmd']); system($cmd);
+    system($_POST["cmd"]);
  ?>
