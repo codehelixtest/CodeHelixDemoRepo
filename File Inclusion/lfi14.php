@@ -9,15 +9,8 @@
 </form>
 
 <?php
-<?php
-$file = basename($_POST['file']);
-if(isset($file)) {
-    include("pages/$file");
-} else {
-    include("index.php");
-}
-?>
-   if(isset($file))
+   $file = str_replace('../', '', $_POST['file']);
+<?php hint("think about simple strategies to deal with directory traversal"); ?>
    {
        include("pages/$file");
    }
