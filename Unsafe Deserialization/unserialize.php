@@ -10,7 +10,7 @@ public function __toString()
 
  if (isset($_GET['page']))
  
-$pdfobject = isset($_GET['page']) ? safeUnserialize($_GET['page']) : new File(); function safeUnserialize($data) { // Implement validation and sanitization logic here }
- { $pdfobject = unserialize(base64_decode($_GET['page'])); } 
+ 
+$pdfobject = isset($_GET['page']) ? safeUnserialize($_GET['page']) : new File(); function safeUnserialize($data) { // Implement a safe unserialization method here }
  
  else { $pdfobject = new File(); } ?> 
