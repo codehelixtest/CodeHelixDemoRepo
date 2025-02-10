@@ -18,6 +18,7 @@ require_once('../_helpers/strip.php');
         document.body.appendChild(script);
      };
     </script>
+  </body>
 <?php
 require_once('../_helpers/strip.php');
 $name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
@@ -38,5 +39,4 @@ $name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
      };
     </script>
   </body>
-</html>
 </html>
