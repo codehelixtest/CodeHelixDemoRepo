@@ -16,7 +16,10 @@ class GiveFlag extends File {
   public function innocent() {
     $stuff = fopen("flag.txt", "r");
     fseek($stuff, $this->offset);
-$data = unserialize($argv[1]); if ($data instanceof ExpectedClass) { /* proceed with safe operations */ } else { /* handle error */ }
+$filename = 'flag.txt';
+$stuff = fopen($filename, 'r');
+fseek($stuff, $this->offset);
+print fread($stuff, filesize($filename));
   }
 }
 class entry {
