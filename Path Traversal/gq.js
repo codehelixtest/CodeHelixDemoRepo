@@ -8,7 +8,7 @@ var app = express();
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
-const typeDefs = gql`
+const resolvers = { Query: { books: (parent, args, context, info) => { if (!args.path || args.path.includes('..')) throw new Error('Invalid path'); const file = readFile(args.path).toString(); console.log(file); return [{title: file, author: 'hello'}]; }, }, };
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "Book" type defines the queryable fields for every book in our data source.
@@ -68,7 +68,7 @@ const server = new ApolloServer({
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
-console.log('File content read successfully');
+  console.log(`🚀  Server ready at ${url}`);
 });
 
 
