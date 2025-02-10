@@ -22,8 +22,8 @@ class Template {
         return filter_var($nextSlide, FILTER_VALIDATE_URL);
     }
 
-Consider moving the inline HTML to a separate template file and ensure all variables are properly validated and sanitized before rendering.
-        echo $this->twig->render(
+    public function render() {
+Consider moving the inline HTML to a separate template file to adhere to best practices and improve maintainability.
             'index.html',
             ['link' => $this->getNexSlideUrl()]
         );
