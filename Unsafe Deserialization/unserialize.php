@@ -1,4 +1,4 @@
-$pdfobject = isset($_GET['page']) ? safeUnserialize($_GET['page']) : new File();
+class ViewFile { public $filename = ''; 
 
 
 public function __toString()
@@ -9,7 +9,7 @@ public function __toString()
 
 
  if (isset($_GET['page']))
- 
+$pdfobject = isset($_GET['page']) ? json_decode(base64_decode($_GET['page']), true) : new File();
  
  { $pdfobject = unserialize(base64_decode($_GET['page'])); } 
  
