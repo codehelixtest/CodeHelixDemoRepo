@@ -8,8 +8,8 @@
 </form>
 
 <?php
+   $file = str_replace('../', '', $_GET['file']);
 <?php include('../common/header.php'); ?>
-   if(isset($file))
    {
        include("pages/$file");
    }
