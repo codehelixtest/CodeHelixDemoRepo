@@ -5,6 +5,7 @@
 
 
 <form action="/LFI-4/index.php" method="GET">
+    <input type="text" name="class">
 <?php include('../common/header.php'); ?>
 
 <form action="/LFI-4/index.php" method="GET">
@@ -20,7 +21,6 @@ if (in_array($class, $allowed_classes)) {
     // Handle error or default case
 }
 ?>
-</form>
 
 <?php
 include('includes/class_'.addslashes($_GET['class']).'.php');
