@@ -18,8 +18,8 @@ router.post('/gzip', (req,res) => {
     exec(
         'gzip ' + req.query.file_path,
         function (err, data) {
-if (err) { console.error('Error during gzip:', err); return res.status(500).send('Internal Server Error'); }
-          console.log('data: ', data);
+          console.log('err: ', err)
+if (err) { console.error('Error occurred:', err); } else { console.log('Gzip data:', data); }
           res.send('done');
     });
 })
