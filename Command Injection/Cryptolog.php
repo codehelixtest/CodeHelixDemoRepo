@@ -15,7 +15,7 @@ mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
 include("classes/logshares_class.php");
 if($opt=='del')
 {
-  cLogshares::fDeleteFileshareDB($dbConn,$lsid);
+cLogshares::fTestFileshare('/mnt/logsource_' . $lsid . '_' . $sharetype);
 }
 else if($opt=='add')
 {
