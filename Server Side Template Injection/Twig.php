@@ -6,8 +6,8 @@ class Template {
 
     public function __construct() {
         $indexTemplate = '<img ' .
-Consider moving the inline HTML to a separate template file to enhance security and maintainability.
-            '<a href="{{link|escape}}">Next slide »</a>';
+            'src="https://loremflickr.com/320/240">' .
+$nextSlide = filter_var($_GET['nextSlide'], FILTER_VALIDATE_URL); if (!$nextSlide) { $nextSlide = 'default_url'; }
 
         // Default twig setup, simulate loading
         // index.html file from disk
