@@ -1,10 +1,10 @@
 class Example2
 {
-   private $hook;
+function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
 
    function __construct()
    {
-$user_data = json_decode($_COOKIE['data'], true); // safer alternative
+      // some PHP code...
    }
 
    function __wakeup()
