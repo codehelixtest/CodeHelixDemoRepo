@@ -5,8 +5,9 @@
 
 		// Can we move the file to the upload folder?
 		if( !move_uploaded_file( $_FILES[ 'uploaded' ][ 'tmp_name' ], $target_path ) ) {
+			// No
+// Sanitize output before echoing
 $html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
-			$html .= '<pre>Your image was not uploaded.</pre>';
 		}
 		else {
 			// Yes!
