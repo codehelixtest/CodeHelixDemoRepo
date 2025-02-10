@@ -4,10 +4,10 @@ var out;
 var valTom;
 var req = http.request(options, function(res)
 {
-var req = http.request(options, function(res) { res.on('data', function(chunk) { valTom = chunk; }); });
+	res.on('data', function(chunk)
 	{
 		valTom = chunk;
-	}
+var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)", [valTom];
 	);
 }
 );
