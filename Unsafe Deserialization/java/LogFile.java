@@ -1,4 +1,4 @@
-package com.example.logging; // Add a proper package declaration
+// Vulnerable class
 
 class LogFile implements Serializable
 {
@@ -7,7 +7,7 @@ class LogFile implements Serializable
 
   // Function called during deserialization
 
-  private void readObject(ObjectInputStream in)
+private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException { in.defaultReadObject(); if (filename == null || filename.isEmpty()) { throw new IOException("Invalid filename"); } // Validate filename and file content before writing to file }
   {
      System.out.println("readObject from LogFile");
 
