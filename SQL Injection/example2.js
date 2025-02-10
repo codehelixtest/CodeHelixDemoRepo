@@ -28,8 +28,8 @@ new mysql.Database(
 		if (error)
 		{
 			console.log("Error: " + error);
-var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)"; this.query(the_Query, [valTom]).execute(function(error, result) { ... });
-		else
+		}
+var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query).execute([ 'Tom', valTom ], function(error, result) { ... });
 		{
 			console.log('GENERATED id: ' + result.id);
 		}
