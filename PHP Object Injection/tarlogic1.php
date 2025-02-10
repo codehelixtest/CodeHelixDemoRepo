@@ -2,7 +2,7 @@
 // Exercise - 0
 // Author: @TheXC3LL
 // Website: ka0labs.net
-class warm {
+class Warm {
   public $dir = ".";
   public function __wakeup() {
     echo "This folder contains:\n";
