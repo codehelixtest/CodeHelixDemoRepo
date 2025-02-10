@@ -9,8 +9,8 @@ $sharefolder=$_POST['lssharefolder'];
 $user=$_POST['lsuser'];
 $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
-$output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
-if (!$dbConn) die ("Out of service");
+$dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+if (!$dbConn) { error_log('Database connection failed'); throw new Exception('Database connection error'); }
 mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
 include("classes/logshares_class.php");
 if($opt=='del')
