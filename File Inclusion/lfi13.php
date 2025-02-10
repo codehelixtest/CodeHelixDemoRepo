@@ -1,4 +1,7 @@
-<!-- from https://github.com/ewilded/psychoPATH -->
+<?php
+// from https://github.com/ewilded/psychoPATH
+include("../common/header.php");
+?>
 <?php     include("../common/header.php");   ?>
 
 <?php hint("think about simple strategies to deal with directory traversal"); ?>
@@ -15,6 +18,6 @@
    }
    else
    {
-<?php $file = basename($_GET['file']); include('pages/' . $file); ?>
+       include("index.php");
    }
 ?>
