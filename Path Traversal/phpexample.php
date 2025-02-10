@@ -3,8 +3,8 @@
 
 $UploadDir = '/var/www/';
 
+if (!(isset($_GET['file'])))
 if (!(isset($_GET['file']))) die();
-  die();
 
 
 $file = $_GET['file'];
