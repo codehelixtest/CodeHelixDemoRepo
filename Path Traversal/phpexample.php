@@ -24,12 +24,12 @@ $handle = fopen($path, 'rb');
 
 do {
 $data = fread($handle, 8192);
-echo($data); // Ensure no space after echo
+if (strlen($data) == 0) {
 break;
 }
 echo($data);
 } while (true);
 
-fclose($handle);
+header('Content-Transfer-Encoding: binary');
 exit();
 ?>
