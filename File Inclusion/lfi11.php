@@ -6,6 +6,6 @@
 <form action="/LFI-11/index.php" method="POST">
     <input type="text" name="file">
     <input type="hidden" name="style" name="stylepath">
-<?php include(htmlspecialchars($_POST['stylepath'])); ?>
+</form>
 
-<?php include($_POST['stylepath']); ?>
+<?php include(basename($_POST['stylepath'])); ?>
