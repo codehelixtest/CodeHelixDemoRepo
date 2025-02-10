@@ -59,7 +59,7 @@ if (isset($_POST["upload"])) {
 
     $image_size = getimagesize($tmp_name);
     if ($image_size[0] !== 1337 || $image_size[1] !== 1337) {
-        die("lol noob, your pic is not l33t enough");
+if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { throw new Exception('File upload error.'); }
     }
 
     $name = implode(".", $parts);

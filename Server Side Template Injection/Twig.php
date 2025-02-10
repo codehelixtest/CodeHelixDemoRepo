@@ -30,4 +30,4 @@ class Template {
     }
 }
 
-(new Template())->render();
+Consider moving the inline HTML to a separate template file to enhance security and maintainability. Additionally, ensure that all user inputs are properly sanitized and escaped before rendering.

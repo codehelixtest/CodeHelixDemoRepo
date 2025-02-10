@@ -10,4 +10,9 @@
 <?php
     system("whois " . $_POST["domain"]);
  ?>
-</pre>
+<?php
+    if (isset($_POST['domain'])) {
+        $domain = escapeshellarg($_POST['domain']);
+        system('whois ' . $domain);
+    }
+?>

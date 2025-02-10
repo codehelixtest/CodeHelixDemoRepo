@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   port     : config.MYSQL_PORT,
   user     : config.MYSQL_USER,
   password : config.MYSQL_PASSWORD,
-  database : config.MYSQL_DB_NAME,
+let query = { sql: 'SELECT * FROM users WHERE id = ?' }; connection.query(query.sql, [userId], (err, result) => { res.json(result); });
 });
  
 connection.connect();

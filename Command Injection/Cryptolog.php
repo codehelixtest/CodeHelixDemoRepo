@@ -9,7 +9,7 @@ $sharefolder=$_POST['lssharefolder'];
 $user=$_POST['lsuser'];
 $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
-$dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+class Logshares { public static function fTestFileshare($sharefolder) { $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh '.$sharefolder); return trim($output); } }
 if (!$dbConn) die ("Out of service");
 mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
 include("classes/logshares_class.php");

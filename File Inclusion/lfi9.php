@@ -9,6 +9,13 @@
 </form>
 
 <?php
-include('includes/class_'.addslashes($_POST['class']).'.php');
+<?php
+$allowed_classes = ['class1', 'class2']; // Example whitelist
+if (in_array($_POST['class'], $allowed_classes)) {
+    include('includes/class_' . $_POST['class'] . '.php');
+} else {
+    // Handle error
+}
+?>
 ?>
 

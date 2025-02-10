@@ -7,6 +7,6 @@ const sequelize = new Sequelize('database', 'username', 'password', {
   storage: 'data/juiceshop.sqlite'
 });
 
-app.post('/login', function (req, res) {
+sequelize.query('SELECT * FROM Products WHERE name LIKE ?', { replacements: [req.body.username] });
     sequelize.query('SELECT * FROM Products WHERE name LIKE ' +  req.body.username);
   })

@@ -8,7 +8,22 @@
 </form>
 
 <?php
-   $file = str_replace('../', '', $_GET['file']);
+<?php
+include('../common/header.php');
+
+if (isset($_GET['file'])) {
+    $file = basename($_GET['file']); // Use basename to prevent directory traversal
+    $allowed_files = ['index.php', 'page1.php', 'page2.php']; // Define allowed files
+    if (in_array($file, $allowed_files)) {
+        include("pages/$file");
+    } else {
+        // Handle error or default case
+        include('index.php');
+    }
+} else {
+    include('index.php');
+}
+?>
    if(isset($file))
    {
        include("pages/$file");

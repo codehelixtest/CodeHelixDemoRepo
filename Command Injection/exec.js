@@ -19,7 +19,7 @@ router.post('/gzip', (req,res) => {
         'gzip ' + req.query.file_path,
         function (err, data) {
           console.log('err: ', err)
-          console.log('data: ', data);
+if (err) { console.error('Error occurred:', err); } else { console.log('Gzip data:', data); }
           res.send('done');
     });
 })

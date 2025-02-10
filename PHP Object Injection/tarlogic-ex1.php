@@ -14,7 +14,7 @@ echo "FLAG: \n";
 $test = unserialize($argv[1]);
 $check = $test->role - 1337;
 if ($check == "ADMIN") {
-  $flag = file_get_contents("flag.txt");
+$test = unserialize($argv[1]); // Ensure $argv[1] is sanitized or use a safer alternative.
   echo $flag;
 } else {
   echo "No flag for you!! Better luck next time!\n";

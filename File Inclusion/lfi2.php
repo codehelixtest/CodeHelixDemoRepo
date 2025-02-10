@@ -8,6 +8,12 @@
 </form>
 
 <?php
-include("includes/".$_GET['library'].".php"); 
+<?php
+if (isset($_GET['library']) && preg_match('/^[a-zA-Z0-9_]+$/', $_GET['library'])) {
+    include('includes/' . $_GET['library'] . '.php');
+} else {
+    // Handle error
+}
+?>
 ?>
 

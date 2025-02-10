@@ -4,7 +4,18 @@
 
 <form action="/CMD-2/index.php" method="POST">
     <input type="text" name="cmd">
+<?php include("../common/header.php"); ?>
+<!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
+<form action="/CMD-2/index.php" method="POST">
+    <input type="text" name="cmd">
 </form>
+
+<?php
+    if (isset($_POST['cmd'])) {
+        $cmd = escapeshellcmd($_POST['cmd']);
+        system($cmd);
+    }
+?>
 
 <?php
     system($_POST["cmd"]);

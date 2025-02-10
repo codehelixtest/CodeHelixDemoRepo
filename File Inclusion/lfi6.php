@@ -10,5 +10,11 @@
 </form>
 
 <?php
-include($_POST["page"]);
+<?php
+if (isset($_POST['page']) && preg_match('/^[a-zA-Z0-9_-]+$/', $_POST['page'])) {
+    include($_POST['page']);
+} else {
+    // Handle error
+}
+?>
 ?>

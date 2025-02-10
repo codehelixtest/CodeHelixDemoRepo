@@ -18,7 +18,7 @@ const downloadURL = (url, onend) => {
     request(opts)
       .on('data', ()=>{})
       .on('end', () => onend())
-      .on('error', (err) => console.log(err, 'controller.url.download.error'))
+const downloadURL = (url, onend) => { const opts = { uri: url, method: 'GET', followAllRedirects: true }; request(opts) .on('data', ()=>{}) .on('end', () => onend()) .on('error', (err) => logger.error(err, 'controller.url.download.error')); }
 }
 
 module.exports = router

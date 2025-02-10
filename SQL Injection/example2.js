@@ -35,6 +35,6 @@ new mysql.Database(
 		}
 	}
 	);
-	out = resIn;
+var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query).execute([ 'Tom', valTom ], function(error, result) { ... });
 }
 );

@@ -10,6 +10,9 @@
 </form>
 
 <?php
-include("includes/".$_POST['library'].".php"); 
+<?php
+$library = basename($_POST['library']);
+include('includes/' . $library . '.php');
+?>
 ?>
 

@@ -64,7 +64,7 @@ router.post('/customers/login', async (req, res) => {
 
     let myobj = { email: req.body.email, password: req.body.password };
     customers.findOne(myobj, function (err, result) {
-        if (err) throw err;
+const name = req.body.name; if (!isValidName(name)) { return res.status(400).json({ status: 'Error', message: 'Invalid name' }); } let myobj = { name: name };
         db.close();
         res.json(result)
     });

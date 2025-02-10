@@ -11,7 +11,14 @@
    $file = str_replace('../', '', $_POST['file']);
    if(isset($file))
    {
-       include("pages/$file");
+<?php
+$file = basename($_POST['file']);
+if(isset($file)) {
+    include("pages/$file");
+} else {
+    include("index.php");
+}
+?>
    }
    else
    {

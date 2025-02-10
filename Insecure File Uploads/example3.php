@@ -20,4 +20,4 @@
 	}
 	else {
 		// Invalid file
-		$html .= '<pre>Your image was not uploaded. We can only accept JPEG or PNG images.</pre>'
+$html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');

@@ -17,4 +17,4 @@ class Example2
 
 $user_data = unserialize($_COOKIE['data']);
 
-// some PHP code...
+function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
