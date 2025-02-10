@@ -15,18 +15,14 @@ class Template {
             'index.html' => $indexTemplate
         ]);
         $this->twig = new Twig\Environment($loader);
-public function render() {
-    $link = $this->getNexSlideUrl();
-    if ($link === false) {
-        throw new InvalidArgumentException('Invalid URL');
     }
-    echo $this->twig->render(
-        'index.html',
-        ['link' => $link]
-    );
-}
 
-    public function getNexSlideUrl() {
+$nextSlide = $_GET['nextSlide'];
+$nextSlide = filter_var($nextSlide, FILTER_VALIDATE_URL);
+if ($nextSlide === false) {
+    throw new InvalidArgumentException('Invalid URL');
+}
+return $nextSlide;
         $nextSlide = $_GET['nextSlide'];
         return filter_var($nextSlide, FILTER_VALIDATE_URL);
     }
