@@ -34,24 +34,28 @@ private void readObject(ObjectInputStream in) {
     System.out.println("readObject from LogFile");
     try {
         in.defaultReadObject();
-        System.out.println("File name: " + filename + ", file content: \n" + filecontent);
-
-        // Validate filename and filecontent here
-        if (isValidFilename(filename) && isValidFileContent(filecontent)) {
-            FileWriter file = new FileWriter(filename);
-            BufferedWriter out = new BufferedWriter(file);
-            System.out.println("Restoring log data to file...");
-            out.write(filecontent);
-            out.close();
-            file.close();
-        } else {
-            throw new IllegalArgumentException("Invalid filename or file content");
+        if (filename == null || filename.isEmpty()) {
+            throw new IllegalArgumentException("Filename cannot be null or empty");
         }
-    } catch (IOException e) {
-        System.out.println("IOException: " + e.toString());
-    } catch (IllegalArgumentException e) {
-        System.out.println("IllegalArgumentException: " + e.toString());
+        // Validate filename to prevent path traversal
+        if (!isValidFileName(filename)) {
+            throw new SecurityException("Invalid filename");
+        }
+        System.out.println("File name: " + filename + ", file content: \n" + filecontent);
+        FileWriter file = new FileWriter(filename);
+        BufferedWriter out = new BufferedWriter(file);
+        System.out.println("Restoring log data to file...");
+        out.write(filecontent);
+        out.close();
+        file.close();
+    } catch (Exception e) {
+        System.out.println("Exception: " + e.toString());
     }
+}
+
+private boolean isValidFileName(String filename) {
+    // Implement validation logic to prevent path traversal
+    return !filename.contains("..") && filename.matches("^[a-zA-Z0-9._-]+$");
 }
      {
          System.out.println("Exception: " + e.toString());
