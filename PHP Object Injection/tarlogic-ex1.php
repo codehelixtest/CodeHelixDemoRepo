@@ -11,10 +11,10 @@ $one = new login();
 $a = serialize($one);
 echo "Example of an object:\n$a\n\n";
 echo "FLAG: \n";
-if (isset($argv[1])) { $test = unserialize($argv[1]); } else { die('No input provided.'); }
+$test = unserialize($argv[1]);
 $check = $test->role - 1337;
 if ($check == "ADMIN") {
-  $flag = file_get_contents("flag.txt");
+public function methodName() { /* method implementation */ }
   echo $flag;
 } else {
   echo "No flag for you!! Better luck next time!\n";
