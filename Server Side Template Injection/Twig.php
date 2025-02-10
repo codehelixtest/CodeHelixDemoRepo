@@ -17,13 +17,8 @@ class Template {
         $this->twig = new Twig\Environment($loader);
     }
 
-$nextSlide = $_GET['nextSlide'];
-$nextSlide = filter_var($nextSlide, FILTER_VALIDATE_URL);
-if ($nextSlide === false) {
-    throw new InvalidArgumentException('Invalid URL');
-}
-return $nextSlide;
-        $nextSlide = $_GET['nextSlide'];
+    public function getNexSlideUrl() {
+$nextSlide = filter_var($_GET['nextSlide'], FILTER_SANITIZE_URL);
         return filter_var($nextSlide, FILTER_VALIDATE_URL);
     }
 
