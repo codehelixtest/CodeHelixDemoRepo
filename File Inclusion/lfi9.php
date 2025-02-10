@@ -4,15 +4,21 @@
 
 <?php hint("will include the arg specified in the POST parameter \"class\", appends .php to end, defeat with NULL byte %00"); ?>
 
+<form action="/LFI-9/index.php" method="POST">
 <?php include('../common/header.php'); ?>
 
+<form action="/LFI-9/index.php" method="POST">
+    <input type="text" name="class">
+</form>
+
 <?php
-if (isset($_POST['class'])) {
-    $class = basename($_POST['class']); // Use basename to prevent directory traversal
-    include('includes/class_' . $class . '.php');
+$allowed_classes = ['class1', 'class2']; // Define allowed classes
+if (in_array($_POST['class'], $allowed_classes)) {
+    include('includes/class_' . $_POST['class'] . '.php');
+} else {
+    // Handle error
 }
 ?>
-    <input type="text" name="class">
 </form>
 
 <?php
