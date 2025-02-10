@@ -4,8 +4,8 @@ class Example2
 
    function __construct()
    {
+      // some PHP code...
 function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
-   }
 
    function __wakeup()
    {
