@@ -4,11 +4,11 @@ class ViewFile { public $filename = '';
 public function __toString()
 
 
-if (isset($_GET['page'])) { $pdfobject = json_decode(base64_decode($_GET['page']), true); } else { $pdfobject = new File(); } // Use a safer serialization format
+ { include $this->filename; return ""; } }
 
 
 
- if (isset($_GET['page']))
+if (isset($_GET['page'])) { $pdfobject = json_decode(base64_decode($_GET['page']), true); // Use a safer alternative to unserialize }
  
  
  { $pdfobject = unserialize(base64_decode($_GET['page'])); } 
