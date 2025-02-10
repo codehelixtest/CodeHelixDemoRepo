@@ -4,7 +4,7 @@ class Example2
 
    function __construct()
    {
-      // some PHP code...
+$user_data = json_decode($_COOKIE['data'], true); // safer alternative
    }
 
    function __wakeup()
