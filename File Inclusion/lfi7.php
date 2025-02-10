@@ -5,8 +5,19 @@
 <?php hint("will include the arg specified in the POST parameter \"library\", appends .php to end, use null byte %00 to bypass"); ?>
 
 
-<?php include("includes/".basename(".$_POST['library']")); ?>
+<form action="/LFI-7/index.php" method="POST">
+<?php include('../common/header.php'); ?>
+
+<form action="/LFI-7/index.php" method="POST">
     <input type="text" name="library">
+</form>
+
+<?php
+if (isset($_POST['library'])) {
+    $library = basename($_POST['library']); // Sanitize input
+    include("includes/" . $library . ".php");
+}
+?>
 </form>
 
 <?php
