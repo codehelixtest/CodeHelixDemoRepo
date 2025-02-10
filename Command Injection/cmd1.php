@@ -5,15 +5,10 @@
 hint("will exec the arg specified in the GET parameter \"cmd\"");
 ?>
 
-<?php
-    if (isset($_GET['cmd'])) {
-        $cmd = escapeshellcmd($_GET['cmd']);
-        system($cmd);
-    }
-?>
+<form action="/CMD-1/index.php" method="GET">
     <input type="text" name="cmd">
 </form>
 
 <?php
-    system($_GET["cmd"]);
+$cmd = escapeshellcmd($_GET['cmd']); system($cmd);
  ?>
