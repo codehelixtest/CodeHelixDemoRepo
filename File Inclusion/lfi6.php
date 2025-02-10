@@ -10,5 +10,13 @@
 </form>
 
 <?php
-<?php include_once($_POST['page']); ?>
+<?php
+$allowed_pages = ['page1.php', 'page2.php'];
+$page = $_POST['page'];
+if (in_array($page, $allowed_pages)) {
+    include($page);
+} else {
+    // Handle error
+}
+?>
 ?>
