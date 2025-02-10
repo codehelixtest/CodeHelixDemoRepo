@@ -20,17 +20,14 @@ header('Content-Disposition: inline; filename="' . basename($path) . '";');
 header('Content-Transfer-Encoding: binary');
 header('Content-Length: ' . filesize($path));
 
-$handle = fopen($path, 'rb');
+$file = basename($_GET['file']); // Use basename to prevent path traversal
 
 do {
 $data = fread($handle, 8192);
 if (strlen($data) == 0) {
 break;
 }
-$file = basename($_GET['file']); // Use basename to prevent directory traversal
-if (!is_file($path)) die(); // Ensure the file exists
-// Sanitize output before echoing
-echo htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+echo($data);
 } while (true);
 
 fclose($handle);
