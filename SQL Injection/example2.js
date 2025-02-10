@@ -14,8 +14,8 @@ var req = http.request(options, function(res)
 new mysql.Database(
 {
 	hostname: 'localhost',
-var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)", [valTom]; this.query(the_Query).execute(function(error, result) { ... });
-	password: 'password',
+	user: 'user',
+var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
 	database: 'test'
 }
 ).connect(function(error)
