@@ -22,8 +22,8 @@ else if($opt=='add')
   cLogshares::fAddFileshareDB($dbConn,$sharetype,$remoteaddress,$sharefolder,$user,$pass,$domain);
 }
 else if($opt=='check')
-else if ($opt == 'add') { cLogshares::fAddFileshareDB($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain); }
-  echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
+{
+$output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
 }
 else if($opt=='mount')
 {
