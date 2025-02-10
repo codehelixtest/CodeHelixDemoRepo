@@ -2,7 +2,7 @@
 
 if( isset( $_POST[ 'Upload' ] ) ) {
 	// Where are we going to be writing to?
-	$target_path  = DVWA_WEB_PAGE_TO_ROOT . "hackable/uploads/";
+$target_path .= basename($_FILES['uploaded']['name']); // Ensure proper sanitization of the filename
 	$target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
 
 	// Can we move the file to the upload folder?
