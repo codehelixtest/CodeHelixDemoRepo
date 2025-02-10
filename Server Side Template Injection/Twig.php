@@ -1,7 +1,7 @@
 // composer require "twig/twig"
-$nextSlide = filter_var($_GET['nextSlide'], FILTER_SANITIZE_URL);
+require 'vendor/autoload.php';
 
-class Template {
+private function getNextSlideUrl() { $nextSlide = $_GET['nextSlide']; return filter_var($nextSlide, FILTER_VALIDATE_URL) ?: 'default_url'; }
     private $twig;
 
     public function __construct() {
