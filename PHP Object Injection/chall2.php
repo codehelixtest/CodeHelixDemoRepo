@@ -1,8 +1,8 @@
 class Example2
 {
-function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
+   private $hook;
 
-   function __construct()
+function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
    {
       // some PHP code...
    }
