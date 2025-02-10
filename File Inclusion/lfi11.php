@@ -4,8 +4,8 @@
 <?php hint("not everything you need to play with is in a text field"); ?>
 
 <form action="/LFI-11/index.php" method="POST">
-<?php include(htmlspecialchars($_POST['stylepath'], ENT_QUOTES, 'UTF-8')); ?>
-    <input type="hidden" name="style" name="stylepath">
+    <input type="text" name="file">
+<?php include(htmlspecialchars($_POST['stylepath'])); ?>
 </form>
 
 <?php include($_POST['stylepath']); ?>
