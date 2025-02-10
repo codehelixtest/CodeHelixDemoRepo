@@ -8,6 +8,6 @@
 </form>
 
 <?php
-<?php include("../common/header.php"); ?>
+<?php include('includes/' . basename($_GET['library']) . '.php'); ?>
 ?>
 
