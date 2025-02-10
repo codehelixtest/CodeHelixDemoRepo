@@ -6,6 +6,7 @@ require_once('../_helpers/strip.php');
   <head>
 
   </head>
+  <body>
 <?php
 require_once('../_helpers/strip.php');
 $name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
@@ -27,7 +28,6 @@ $name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
     </script>
   </body>
 </html>
-    <p>
       Hi, <?= $_GET['name']; ?>
     </p>
     <script>
