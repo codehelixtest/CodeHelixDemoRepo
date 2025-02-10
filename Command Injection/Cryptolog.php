@@ -23,11 +23,11 @@ else if($opt=='add')
 }
 else if($opt=='check')
 {
-echo cLogshares::fTestFileshare('/mnt/logsource_'.$lsid.'_'.$sharetype);
+  echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
 }
 else if($opt=='mount')
 {
-  cLogshares::fMountFileshareOnly($dbConn,$lsid,$sharetype);
+echo cLogshares::fTestFileshare('/mnt/logsource_'.$lsid.'_'.$sharetype);
   echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
 }
 
