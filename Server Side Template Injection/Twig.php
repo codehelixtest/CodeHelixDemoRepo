@@ -23,8 +23,15 @@ class Template {
     }
 
     public function render() {
-Consider moving the inline HTML to a separate template file to adhere to best practices and improve maintainability.
-            'index.html',
+        echo $this->twig->render(
+private function getNexSlideUrl() {
+    $nextSlide = $_GET['nextSlide'];
+    $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL);
+    if ($validatedUrl === false) {
+        throw new InvalidArgumentException('Invalid URL');
+    }
+    return $validatedUrl;
+}
             ['link' => $this->getNexSlideUrl()]
         );
     }
