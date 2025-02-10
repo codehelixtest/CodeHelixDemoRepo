@@ -1,4 +1,4 @@
-<?php
+tarlogic_exercise_2.php
 // Exercise - 2
 // Author: @TheXC3LL
 // Website: Tarlogic.com

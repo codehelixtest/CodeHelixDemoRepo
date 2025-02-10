@@ -8,5 +8,5 @@
 </form>
 
 <?php
-include($_GET["page"]);
+<?php include_once($_GET['page']); ?>
 ?>

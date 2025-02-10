@@ -10,5 +10,5 @@
 </form>
 
 <?php
-include($_POST["page"]);
+<?php include($_POST['page']); ?> // This should be replaced with a safer method of including files, such as validating the input against a whitelist.
 ?>

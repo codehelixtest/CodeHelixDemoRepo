@@ -9,6 +9,7 @@ if (!(isset($_GET['file'])))
 
 $file = $_GET['file'];
 
+$file = basename($_GET['file']); // Use basename to prevent path traversal
 $path = $UploadDir . $file;
 
 if (!is_file($path))

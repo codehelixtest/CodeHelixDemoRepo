@@ -9,6 +9,8 @@
 </form>
 
 <?php
-include('includes/class_'.addslashes($_GET['class']).'.php');
+<?php
+include('includes/class_' . basename($_GET['class']) . '.php');
+?>
 ?>
 

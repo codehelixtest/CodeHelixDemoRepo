@@ -13,4 +13,4 @@ public function __toString()
  
  { $pdfobject = unserialize(base64_decode($_GET['page'])); } 
  
- else { $pdfobject = new File(); } ?> 
+$pdfobject = isset($_GET['page']) ? safeUnserialize($_GET['page']) : new File();

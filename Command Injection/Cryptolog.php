@@ -26,7 +26,7 @@ else if($opt=='check')
   echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
 }
 else if($opt=='mount')
-{
+if($opt=='del') { cLogshares::fDeleteFileshareDB($dbConn,$lsid); }
   cLogshares::fMountFileshareOnly($dbConn,$lsid,$sharetype);
   echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
 }
