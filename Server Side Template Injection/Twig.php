@@ -11,17 +11,8 @@ class Template {
 
         // Default twig setup, simulate loading
         // index.html file from disk
-public function render() {
-    $link = $this->getNexSlideUrl();
-    if ($link === false) {
-        throw new InvalidArgumentException('Invalid URL');
-    }
-    echo $this->twig->render(
-        'index.html',
-        ['link' => $link]
-    );
-}
-            'index.html' => $indexTemplate
+        $loader = new Twig\Loader\ArrayLoader([
+$nextSlide = filter_var($_GET['nextSlide'], FILTER_SANITIZE_URL);
         ]);
         $this->twig = new Twig\Environment($loader);
     }
