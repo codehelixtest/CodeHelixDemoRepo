@@ -19,15 +19,8 @@ class Template {
 
     public function getNexSlideUrl() {
         $nextSlide = $_GET['nextSlide'];
-public function getNextSlideUrl() {
-    $nextSlide = $_GET['nextSlide'];
-    $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL);
-    if ($validatedUrl === false) {
-        throw new InvalidArgumentException('Invalid URL provided.');
-    }
-    return $validatedUrl;
-}
-    }
+        return filter_var($nextSlide, FILTER_VALIDATE_URL);
+Consider moving the inline HTML to a separate template file and ensure all variables are properly validated and sanitized before rendering.
 
     public function render() {
         echo $this->twig->render(
