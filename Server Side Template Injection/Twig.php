@@ -18,8 +18,15 @@ class Template {
     }
 
     public function getNexSlideUrl() {
-$nextSlide = filter_var($_GET['nextSlide'], FILTER_SANITIZE_URL);
-        return filter_var($nextSlide, FILTER_VALIDATE_URL);
+        $nextSlide = $_GET['nextSlide'];
+public function getNextSlideUrl() {
+    $nextSlide = $_GET['nextSlide'];
+    $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL);
+    if ($validatedUrl === false) {
+        throw new InvalidArgumentException('Invalid URL provided.');
+    }
+    return $validatedUrl;
+}
     }
 
     public function render() {
