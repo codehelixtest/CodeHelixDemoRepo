@@ -24,15 +24,8 @@ class Template {
 
     public function render() {
         echo $this->twig->render(
-private function getNexSlideUrl() {
-    $nextSlide = $_GET['nextSlide'];
-    $validatedUrl = filter_var($nextSlide, FILTER_VALIDATE_URL);
-    if ($validatedUrl === false) {
-        throw new InvalidArgumentException('Invalid URL');
-    }
-    return $validatedUrl;
-}
-            ['link' => $this->getNexSlideUrl()]
+            'index.html',
+Consider moving the inline HTML to a separate template file and ensure all user inputs are properly validated and sanitized before rendering.
         );
     }
 }
