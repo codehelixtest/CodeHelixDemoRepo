@@ -2,15 +2,17 @@
 require_once('../_helpers/strip.php');
 ?>
 <html>
+  <!-- From https://portswigger.net/web-security/dom-based/dom-clobbering -->
 <?php
 require_once('../_helpers/strip.php');
+$name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
 ?>
 <html>
   <head>
   </head>
   <body>
     <p>
-      Hi, <?= htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8'); ?>
+      Hi, <?= $name; ?>
     </p>
     <script>
       window.onload = function(){
@@ -22,7 +24,6 @@ require_once('../_helpers/strip.php');
     </script>
   </body>
 </html>
-  <head>
 
   </head>
   <body>
