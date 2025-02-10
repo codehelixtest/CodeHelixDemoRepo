@@ -1,4 +1,4 @@
-<?php include_once("../common/header.php"); ?>
+<?php     include("../common/header.php");   ?>
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php  hint("not everything you need to inject is in a text input field ..."); ?>
 
@@ -10,7 +10,7 @@
 <pre>
 <?php
 if (preg_match('/^[-a-z0-9]+\.a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvyz]|t[cdfghjklmnoprtvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]|biz|cat|com|edu|gov|int|mil|net|org|pro|tel|aero|arpa|asia|coop|info|jobs|mobi|name|museum|travel|arpa|xn--[a-z0-9]+$/', strtolower($_POST["domain"])))
-        { system("whois -h " . $_POST["server"] . " " . $_POST["domain"]); } 
+$domain = escapeshellarg(strtolower($_POST['domain'])); system('whois -h ' . $_POST['server'] . ' ' . $domain);
     else 
         {echo "malformed domain name";}
     
