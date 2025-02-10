@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+<?php include_once($_POST['page']); ?>
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 
