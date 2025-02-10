@@ -9,31 +9,24 @@ class LogFile implements Serializable
 
   private void readObject(ObjectInputStream in)
   {
-private void readObject(ObjectInputStream in) {
-    // Avoid printing sensitive information
-    // System.out.println("readObject from LogFile");
-    try {
-        in.defaultReadObject();
-        // Avoid logging sensitive data
-        // System.out.println("File name: " + filename + ", file content: \n" + filecontent);
-        // Restore LogFile, write file content to file name
-        FileWriter file = new FileWriter(filename);
-        BufferedWriter out = new BufferedWriter(file);
-        out.write(filecontent);
-        out.close();
-        file.close();
-    } catch (Exception e) {
-        // Log exception securely
-        // System.out.println("Exception: " + e.toString());
-    }
-}
+     System.out.println("readObject from LogFile");
 
      try
      {
         // Unserialize data
 
         in.defaultReadObject();
-        System.out.println("File name: " + filename + ", file content: \n" + filecontent);
+private void readObject(ObjectInputStream in) {
+    try {
+        in.defaultReadObject();
+        // Use a proper logging framework instead of System.out.println
+        Logger logger = Logger.getLogger(LogFile.class.getName());
+        logger.info("File name: " + filename);
+        // Avoid logging file content directly
+    } catch (Exception e) {
+        // Handle exception appropriately
+    }
+}
 
         // Do something useful with the data
         // Restore LogFile, write file content to file name
