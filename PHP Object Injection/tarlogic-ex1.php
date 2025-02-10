@@ -8,15 +8,7 @@ class login {
   public $role = "MUGGLE";
 }
 $one = new login();
-$serializedInput = isset($argv[1]) ? $argv[1] : '';
-$test = unserialize($serializedInput);
-if ($test instanceof login && $test->role === 'ADMIN') {
-  $flag = file_get_contents('flag.txt');
-  echo $flag;
-} else {
-  echo 'No flag for you!! Better luck next time!';
-}
-$a = serialize($one);
+$test = unserialize($argv[1]); // Ensure $argv[1] is sanitized or use a safer alternative to unserialize.
 echo "Example of an object:\n$a\n\n";
 echo "FLAG: \n";
 $test = unserialize($argv[1]);
