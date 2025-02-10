@@ -1,4 +1,4 @@
-<?php
+$name = preg_replace('/[^a-zA-Z0-9_-]/', '', implode('.', $parts));
 if (isset($_GET["source"]))
     die(highlight_file(__FILE__));
 
