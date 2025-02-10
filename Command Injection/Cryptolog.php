@@ -18,11 +18,11 @@ if($opt=='del')
   cLogshares::fDeleteFileshareDB($dbConn,$lsid);
 }
 else if($opt=='add')
-if($opt=='del') {
+{
   cLogshares::fAddFileshareDB($dbConn,$sharetype,$remoteaddress,$sharefolder,$user,$pass,$domain);
 }
 else if($opt=='check')
-{
+else if ($opt == 'add') { cLogshares::fAddFileshareDB($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain); }
   echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
 }
 else if($opt=='mount')
