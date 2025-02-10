@@ -1,6 +1,12 @@
 <?php     include("../common/header.php");   ?>
 
-<!-- from http://www.ush.it/2009/02/08/php-filesystem-attack-vectors/ -->
+<?php
+if (isset($_GET['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_GET['file'])) {
+    echo file_get_contents($_GET['file']);
+} else {
+    echo 'Invalid file specified!';
+}
+?>
 <?php hint("will include the arg specified in the GET parameter \"file\", looks for .php at end - bypass by apending /. (slash plus dot)"); ?>
 
 
@@ -10,7 +16,7 @@
 
 
 <?php
-<?php if (substr($_GET['file'], -4) != '.php') echo file_get_contents($_GET['file']); else echo 'You are not allowed to see source files!' . "\n"; ?>
+if (substr($_GET['file'], -4, 4) != '.php')
  echo file_get_contents($_GET['file']);
 else
  echo 'You are not allowed to see source files!'."\n";
