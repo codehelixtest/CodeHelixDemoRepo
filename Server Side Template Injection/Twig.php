@@ -7,9 +7,9 @@ class Template {
     public function __construct() {
         $indexTemplate = '<img ' .
             'src="https://loremflickr.com/320/240">' .
-$nextSlide = filter_var($_GET['nextSlide'], FILTER_VALIDATE_URL); if (!$nextSlide) { $nextSlide = 'default_url'; }
+            '<a href="{{link|escape}}">Next slide »</a>';
 
-        // Default twig setup, simulate loading
+$nextSlide = filter_var($_GET['nextSlide'], FILTER_VALIDATE_URL); if ($nextSlide === false) { $nextSlide = '#'; } // Default to a safe value if invalid
         // index.html file from disk
         $loader = new Twig\Loader\ArrayLoader([
             'index.html' => $indexTemplate
