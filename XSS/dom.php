@@ -1,6 +1,7 @@
 <?php
 require_once('../_helpers/strip.php');
 ?>
+<html>
 <?php
 require_once('../_helpers/strip.php');
 ?>
@@ -21,7 +22,6 @@ require_once('../_helpers/strip.php');
     </script>
   </body>
 </html>
-  <!-- From https://portswigger.net/web-security/dom-based/dom-clobbering -->
   <head>
 
   </head>
