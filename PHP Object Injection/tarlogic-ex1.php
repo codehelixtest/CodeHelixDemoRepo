@@ -8,10 +8,10 @@ class login {
   public $role = "MUGGLE";
 }
 $one = new login();
-$test = unserialize($argv[1]); // Ensure $argv[1] is sanitized or use a safer alternative to unserialize.
+$a = serialize($one);
 echo "Example of an object:\n$a\n\n";
 echo "FLAG: \n";
-$test = unserialize($argv[1]);
+$test = unserialize($argv[1]); // Avoid using unserialize on untrusted input
 $check = $test->role - 1337;
 if ($check == "ADMIN") {
   $flag = file_get_contents("flag.txt");
