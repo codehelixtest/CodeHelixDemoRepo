@@ -1,4 +1,4 @@
-<?php include_once('includes/'.basename(".$_POST['library'].").'.php'); ?>
+<?php     include("../common/header.php");   ?>
 
 <!-- from http://www.ush.it/2009/02/08/php-filesystem-attack-vectors/ -->
 
@@ -10,6 +10,6 @@
 </form>
 
 <?php
-include("includes/".$_POST['library'].".php"); 
+<?php include_once('includes/'.basename(".$_POST['library'].").'.php'); ?>
 ?>
 
