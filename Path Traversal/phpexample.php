@@ -7,7 +7,7 @@ if (!(isset($_GET['file'])))
   die();
 
 
-$file = basename($_GET['file']); // Use basename to prevent path traversal
+$cacheControl = 'Cache-Control: must-revalidate, post-check=0, pre-check=0'; header($cacheControl); header('Cache-Control: public');
 
 $path = $UploadDir . $file;
 
