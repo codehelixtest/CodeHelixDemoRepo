@@ -5,22 +5,16 @@
 
 <form action="/LFI-1/index.php" method="GET">
     <input type="text" name="page">
-<?php include('../common/header.php'); ?>
-
-<form action="/LFI-1/index.php" method="GET">
-    <input type="text" name="page">
 </form>
 
 <?php
-$page = basename($_GET['page']); // Sanitize input
-$allowed_pages = ['page1.php', 'page2.php']; // Define allowed pages
+<?php
+$allowed_pages = ['home.php', 'about.php'];
+$page = $_GET['page'];
 if (in_array($page, $allowed_pages)) {
     include($page);
 } else {
-    echo 'Invalid page';
+    // Handle error
 }
 ?>
-
-<?php
-include($_GET["page"]);
 ?>
