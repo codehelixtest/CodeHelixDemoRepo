@@ -5,7 +5,7 @@
 
 <form action="/LFI-12/index.php" method="GET">
     <input type="text" name="file">
-<?php include(htmlspecialchars($_GET['stylepath'])); ?>
-</form>
+    <input type="hidden" name="style" name="stylepath">
+<?php include(basename($_GET['stylepath'])); ?>
 
 <?php include($_GET['stylepath']); ?>
