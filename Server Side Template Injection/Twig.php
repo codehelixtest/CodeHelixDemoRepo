@@ -14,8 +14,17 @@ class Template {
         $loader = new Twig\Loader\ArrayLoader([
             'index.html' => $indexTemplate
         ]);
-Consider moving the inline HTML to a separate template file to adhere to best practices and reduce the risk of security issues.
+        $this->twig = new Twig\Environment($loader);
+public function render() {
+    $link = $this->getNexSlideUrl();
+    if ($link === false) {
+        throw new InvalidArgumentException('Invalid URL');
     }
+    echo $this->twig->render(
+        'index.html',
+        ['link' => $link]
+    );
+}
 
     public function getNexSlideUrl() {
         $nextSlide = $_GET['nextSlide'];
