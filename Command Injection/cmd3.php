@@ -11,9 +11,7 @@ hint("will exec 'whois' with the arg specified in the GET parameter \"domain\"")
 
 <pre>
 <?php
-<?php
-    $domain = escapeshellarg($_GET['domain']);
-    system('/usr/bin/whois ' . $domain);
-?>
+$domain = escapeshellarg($_GET['domain']);
+system('/usr/bin/whois ' . $domain);
  ?>
 </pre>
