@@ -18,8 +18,7 @@ router.post('/customers/register', async (req, res) => {
     let myobj = { name: req.body.name, address: req.body.address };
     customers.insertOne(myobj, function (err) {
         if (err) throw err;
-const logger = require('some-logger-library');
-logger.error(err);
+        console.log("user registered");
         res.json({ status:"success", "message": "user inserted" })
         db.close();
     });
@@ -31,7 +30,7 @@ logger.error(err);
 router.post('/customers/find', async (req, res) => {
 
     const client = await MongoClient.connect(url, { useNewUrlParser: true })
-        .catch(err => { console.log(err); });
+const logger = require('some-logger-library'); logger.error(err);
     if (!client) {
         return res.json({ status: "Error" });
     }
