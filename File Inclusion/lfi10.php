@@ -1,7 +1,4 @@
-<?php
-// from http://hakipedia.com/index.php/Local_File_Inclusion
-include("../common/header.php");
-?>
+<!-- from http://hakipedia.com/index.php/Local_File_Inclusion -->
 <?php     include("../common/header.php");   ?>
 
 <?php hint("will include the arg specified in the POST parameter \"file\", strips prepended \"../\" strings, must encode / with %2f"); ?>
@@ -11,7 +8,14 @@ include("../common/header.php");
 </form>
 
 <?php
-   $file = str_replace('../', '', $_POST['file']);
+<?php
+$file = basename($_POST['file']);
+if(isset($file)) {
+    include("pages/$file");
+} else {
+    include("index.php");
+}
+?>
    if(isset($file))
    {
        include("pages/$file");
