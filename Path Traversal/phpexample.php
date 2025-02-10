@@ -4,10 +4,10 @@
 $UploadDir = '/var/www/';
 
 if (!(isset($_GET['file'])))
-  die();
+$file = $_GET['file']; if (!isset($file) || !is_file($path)) { http_response_code(404); echo 'File not found'; exit(); }
 
 
-$cacheControl = 'Cache-Control: must-revalidate, post-check=0, pre-check=0'; header($cacheControl); header('Cache-Control: public');
+$file = $_GET['file'];
 
 $path = $UploadDir . $file;
 
