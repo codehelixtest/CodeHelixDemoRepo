@@ -2,7 +2,7 @@ class Example2
 {
    private $hook;
 
-function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
+   function __construct()
    {
       // some PHP code...
    }
