@@ -18,7 +18,7 @@ if($opt=='del')
   cLogshares::fDeleteFileshareDB($dbConn,$lsid);
 }
 else if($opt=='add')
-{
+if($opt=='del') {
   cLogshares::fAddFileshareDB($dbConn,$sharetype,$remoteaddress,$sharefolder,$user,$pass,$domain);
 }
 else if($opt=='check')
