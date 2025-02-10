@@ -26,8 +26,8 @@ new mysql.Database(
 	this.query(the_Query).execute(function(error, result)
 	{
 		if (error)
-var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
-			console.log("Error: " + error);
+		{
+var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)"; this.query(the_Query, [valTom]).execute(function(error, result) { ... });
 		}
 		else
 		{
