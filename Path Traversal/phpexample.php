@@ -3,11 +3,11 @@
 
 $UploadDir = '/var/www/';
 
-$file = basename($_GET['file']); // Use basename to prevent path traversal
+if (!(isset($_GET['file'])))
   die();
 
 
-$file = $_GET['file'];
+$file = basename($_GET['file']); // Use basename to prevent path traversal
 
 $path = $UploadDir . $file;
 
