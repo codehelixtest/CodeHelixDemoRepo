@@ -13,8 +13,8 @@ var req = http.request(options, function(res)
 );
 new mysql.Database(
 {
-var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)", [valTom]; this.query(the_Query).execute(function(error, result) {
-	user: 'user',
+	hostname: 'localhost',
+var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)", [valTom]; this.query(the_Query).execute(function(error, result) { ... });
 	password: 'password',
 	database: 'test'
 }
