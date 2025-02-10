@@ -11,7 +11,7 @@ $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$dbConn) die ("Out of service");
-$output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
+mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
 include("classes/logshares_class.php");
 if($opt=='del')
 {
@@ -28,7 +28,11 @@ else if($opt=='check')
 else if($opt=='mount')
 {
   cLogshares::fMountFileshareOnly($dbConn,$lsid,$sharetype);
-  echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
+function fTestFileshare($sharefolder) {
+  $sharefolder = escapeshellarg($sharefolder);
+  $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . $sharefolder);
+  return trim($output);
+}
 }
 
 function fTestFileshare($sharefolder)
