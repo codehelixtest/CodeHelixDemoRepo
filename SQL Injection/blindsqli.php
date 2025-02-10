@@ -7,14 +7,15 @@ require_once('../_helpers/strip.php');
 // This is my second secret (ID = 2)
 $db = new SQLite3('test.db');
 
-if (strlen($_GET['id']) < 1) {
+$id = intval($_GET['id']); // Sanitize input
+$count = $db->querySingle('select count(*) from secrets where id = ' . $id);
   echo 'Usage: ?id=1';
 } else {
   // don't sanitize user input, making the SQL query vulnerable to
   // an injection. The query result only returns a row count, making
   // it blind. It can be exploited based on whether the server
   // responds with "Yes!" or "No!"
-$stmt = $db->prepare('SELECT count(*) FROM secrets WHERE id = :id'); $stmt->bindValue(':id', $_GET['id'], SQLITE3_INTEGER); $count = $stmt->execute()->fetchArray()[0];
+  $count = $db->querySingle('select count(*) from secrets where id = ' . $_GET['id']);
 
   if ($count > 0) {
     echo 'Yes!';
