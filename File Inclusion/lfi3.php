@@ -10,6 +10,7 @@
 
 
 <?php
+if (substr($_GET['file'], -4, 4) != '.php')
 <?php
 if (isset($_GET['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_GET['file'])) {
     echo file_get_contents($_GET['file']);
@@ -17,7 +18,6 @@ if (isset($_GET['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_GET['file']
     echo 'You are not allowed to see source files!' . "\n";
 }
 ?>
- echo file_get_contents($_GET['file']);
 else
  echo 'You are not allowed to see source files!'."\n";
 ?>
