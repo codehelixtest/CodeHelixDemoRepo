@@ -10,12 +10,8 @@ $user=$_POST['lsuser'];
 $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
-function fTestFileshare($sharefolder) {
-  $sanitizedShareFolder = escapeshellarg($sharefolder);
-  $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . $sanitizedShareFolder);
-  return trim($output);
-}
-mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
+if (!$dbConn) die ("Out of service");
+$output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
 include("classes/logshares_class.php");
 if($opt=='del')
 {
