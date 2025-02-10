@@ -1,5 +1,12 @@
 <!-- from http://hakipedia.com/index.php/Local_File_Inclusion -->
-<?php     include("../common/header.php");   ?>
+<?php
+$file = str_replace('../', '', $_GET['file']);
+if (isset($file) && preg_match('/^[a-zA-Z0-9_-]+$/', $file)) {
+    include('pages/$file');
+} else {
+    include('index.php');
+}
+?>
 
 <?php hint("will include the arg specified in the GET parameter \"file\", strips prepended \"../\" strings, must encode / with %2f"); ?>
 
