@@ -26,8 +26,8 @@ class Template {
         echo $this->twig->render(
             'index.html',
             ['link' => $this->getNexSlideUrl()]
-$nextSlide = filter_var($_GET['nextSlide'], FILTER_VALIDATE_URL); if ($nextSlide === false) { $nextSlide = 'default_url'; }
-    }
+        );
+public function render() { echo $this->twig->render('index.html', ['link' => htmlspecialchars($this->getNexSlideUrl(), ENT_QUOTES, 'UTF-8')]); }
 }
 
 (new Template())->render();
