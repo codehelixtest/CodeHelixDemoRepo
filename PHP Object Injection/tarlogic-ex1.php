@@ -2,7 +2,7 @@
 // Exercise - 1
 // Author: @TheXC3LL
 // Website: Tarlogic.com
-class login {
+class Login { ... }
   public $username = "X-C3LL";
   public $password = "Insanity";
   public $role = "MUGGLE";
