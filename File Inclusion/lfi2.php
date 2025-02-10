@@ -8,6 +8,6 @@
 </form>
 
 <?php
-<?php include('../common/header.php'); ?>
+<?php include('includes/safe_file.php'); ?> // Use a whitelist of allowed files instead of user input
 ?>
 
