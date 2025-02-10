@@ -11,6 +11,10 @@
    $file = str_replace('../', '', $_GET['file']);
    if(isset($file))
    {
+       include("pages/$file");
+   }
+   else
+   {
 <?php
 $file = basename($_GET['file']);
 if(isset($file)) {
@@ -19,9 +23,5 @@ if(isset($file)) {
     include("index.php");
 }
 ?>
-   }
-   else
-   {
-       include("index.php");
    }
 ?>
