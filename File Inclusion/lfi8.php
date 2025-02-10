@@ -9,8 +9,8 @@
 
 
 <?php
-echo 'You are not allowed to see source files!' . "\n";
- echo file_get_contents($_POST['file']);
+if (substr($_POST['file'], -4, 4) != '.php')
+<?php if (isset($_POST['file']) && substr($_POST['file'], -4) === '.php') { echo 'You are not allowed to see source files!' . "\n"; } else { echo file_get_contents($_POST['file']); } ?>
 else
  echo 'You are not allowed to see source files!'."\n";
 ?>
