@@ -3,6 +3,7 @@
 
 <?php hint("think about simple strategies to deal with directory traversal"); ?>
 
+<form action="/LFI-13/index.php" method="GET">
 <?php include('../common/header.php'); ?>
 
 <?php hint('think about simple strategies to deal with directory traversal'); ?>
@@ -15,14 +16,13 @@
    $file = basename($_GET['file']); // Use basename to prevent directory traversal
    if(isset($file))
    {
-       include("pages/$file"); // Ensure $file is validated
+       include("pages/$file");
    }
    else
    {
        include("index.php");
    }
 ?>
-    <input type="text" name="file">
 </form>
 
 <?php
