@@ -1,4 +1,4 @@
-<?php include_once("../common/header.php"); ?>
+<?php     include("../common/header.php");   ?>
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php
@@ -11,6 +11,9 @@ hint("will exec 'whois' with the arg specified in the GET parameter \"domain\"")
 
 <pre>
 <?php
-    system("/usr/bin/whois " . $_GET["domain"]);
+<?php
+    $domain = escapeshellarg($_GET['domain']);
+    system('/usr/bin/whois ' . $domain);
+?>
  ?>
 </pre>
