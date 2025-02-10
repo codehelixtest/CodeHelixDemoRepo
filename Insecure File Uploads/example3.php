@@ -6,9 +6,9 @@
 	// Is it an image?
 	if( ( strtolower( $uploaded_ext ) == "jpg" || strtolower( $uploaded_ext ) == "jpeg" || strtolower( $uploaded_ext ) == "png" ) &&
 		( $uploaded_size < 100000 ) &&
-if( !move_uploaded_file( $uploaded_tmp, $target_path ) ) { $html .= '<pre>Your image was not uploaded.</pre>'; } else { $html .= '<pre>' . htmlspecialchars($target_path) . ' successfully uploaded!</pre>'; }
+		getimagesize( $uploaded_tmp ) ) {
 
-		// Can we move the file to the upload folder?
+$html .= htmlspecialchars('<pre>Your image was not uploaded.</pre>');
 		if( !move_uploaded_file( $uploaded_tmp, $target_path ) ) {
 			// No
 			$html .= '<pre>Your image was not uploaded.</pre>';
