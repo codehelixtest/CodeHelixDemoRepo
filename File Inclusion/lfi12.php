@@ -1,7 +1,4 @@
-<?php
-// from http://hakipedia.com/index.php/Local_File_Inclusion
-include("../common/header.php");
-?>
+<!-- from http://hakipedia.com/index.php/Local_File_Inclusion -->
 <?php     include("../common/header.php");   ?>
 
 <?php hint("not everything you need to play with is in a text field"); ?>
@@ -11,4 +8,4 @@ include("../common/header.php");
     <input type="hidden" name="style" name="stylepath">
 </form>
 
-<?php include($_GET['stylepath']); ?>
+<?php include(basename($_GET['stylepath'])); ?>
