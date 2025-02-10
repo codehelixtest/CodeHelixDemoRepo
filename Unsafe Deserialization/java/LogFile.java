@@ -1,6 +1,8 @@
-// Vulnerable class
+package com.example.logging;
 
-public LogFile() {}
+class LogFile implements Serializable { ... }
+
+class LogFile implements Serializable
 {
    public String filename;
    public String filecontent;
