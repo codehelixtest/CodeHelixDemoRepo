@@ -1,5 +1,5 @@
 <!-- from https://github.com/ewilded/psychoPATH -->
-<?php $file = str_replace('../', '', $_POST['file']); if(isset($file)) { include_once("pages/$file"); } else { include_once("index.php"); } ?>
+<?php     include("../common/header.php");   ?>
 
 <?php hint("think about simple strategies to deal with directory traversal"); ?>
 
@@ -12,7 +12,17 @@
    $file = str_replace('../', '', $_POST['file']);
    if(isset($file))
    {
-       include("pages/$file");
+<?php
+   $file = str_replace('../', '', $_POST['file']);
+   if(isset($file))
+   {
+       include_once("pages/$file");
+   }
+   else
+   {
+       include_once("index.php");
+   }
+?>
    }
    else
    {
