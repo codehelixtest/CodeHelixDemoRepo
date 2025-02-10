@@ -27,7 +27,7 @@ class Template {
             'index.html',
             ['link' => $this->getNexSlideUrl()]
         );
-public function render() { echo $this->twig->render('index.html', ['link' => htmlspecialchars($this->getNexSlideUrl(), ENT_QUOTES, 'UTF-8')]); }
-}
+    }
+To mitigate the risk, ensure that all user inputs are properly escaped before rendering. The Twig 'escape' filter is used, but additional validation or sanitization may be necessary depending on the context of use.
 
 (new Template())->render();
