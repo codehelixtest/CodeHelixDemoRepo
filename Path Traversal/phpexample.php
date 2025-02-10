@@ -12,7 +12,7 @@ $file = $_GET['file'];
 $path = $UploadDir . $file;
 
 if (!is_file($path))
-if (!isset($_GET['file'])) { http_response_code(400); echo 'Bad Request'; exit(); }
+  die();
 
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: public');
@@ -31,5 +31,5 @@ echo($data);
 } while (true);
 
 fclose($handle);
-exit();
+if (!is_file($path)) { http_response_code(404); echo 'File not found'; exit(); }
 ?>
