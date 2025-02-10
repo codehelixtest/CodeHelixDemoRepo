@@ -6,30 +6,20 @@
 <form action="/LFI-14/index.php" method="POST">
     <input type="text" name="file">
     <input type="hidden" name="style" name="stylepath">
-<?php include('../common/header.php'); ?>
-
-<form action="/LFI-14/index.php" method="POST">
-    <input type="text" name="file" required>
-    <input type="hidden" name="style" value="stylepath">
 </form>
-
-<?php
-   $file = basename($_POST['file']); // Use basename to prevent directory traversal
-   if(isset($file))
-   {
-       include("pages/$file"); // Ensure $file is validated against a whitelist
-   }
-   else
-   {
-       include("index.php");
-   }
-?>
 
 <?php
    $file = str_replace('../', '', $_POST['file']);
    if(isset($file))
    {
-       include("pages/$file");
+<?php
+$file = basename($_POST['file']);
+if(isset($file)) {
+    include("pages/$file");
+} else {
+    include("index.php");
+}
+?>
    }
    else
    {
