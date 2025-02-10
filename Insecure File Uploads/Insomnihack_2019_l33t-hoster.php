@@ -9,10 +9,7 @@ if (!isset($_SESSION["home"])) {
 }
 $userdir = "images/{$_SESSION["home"]}/";
 if (!file_exists($userdir)) {
-$userdir = 'images/{$_SESSION['home']}/';
-if (!file_exists($userdir)) {
-    mkdir($userdir, 0700); // Set permissions to allow only the owner to read/write
-}
+    mkdir($userdir);
 }
 
 $disallowed_ext = array(
@@ -31,7 +28,7 @@ $disallowed_ext = array(
 
 if (isset($_POST["upload"])) {
     if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-        die("yuuuge fail");
+if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { error_log('File upload error: ' . $_FILES['image']['error']); throw new Exception('File upload failed.'); }
     }
 
     $tmp_name = $_FILES["image"]["tmp_name"];
