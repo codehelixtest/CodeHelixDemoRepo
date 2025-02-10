@@ -1,5 +1,5 @@
-Consider moving the inline HTML to a separate template file and ensure all variables are properly sanitized before rendering.
-require 'vendor/autoload.php';
+// composer require "twig/twig"
+$nextSlide = filter_var($_GET['nextSlide'], FILTER_SANITIZE_URL);
 
 class Template {
     private $twig;
