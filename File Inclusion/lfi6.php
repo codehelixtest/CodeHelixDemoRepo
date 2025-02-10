@@ -7,22 +7,14 @@
 
 <form action="/LFI-6/index.php" method="POST">
     <input type="text" name="page">
-<?php include('../common/header.php'); ?>
-
-<form action="/LFI-6/index.php" method="POST">
-    <input type="text" name="page">
 </form>
 
 <?php
-$page = basename($_POST['page']); // Sanitize input
-$allowed_pages = ['page1.php', 'page2.php']; // Define allowed pages
-if (in_array($page, $allowed_pages)) {
-    include($page);
+<?php
+if (isset($_POST['page']) && preg_match('/^[a-zA-Z0-9_-]+$/', $_POST['page'])) {
+    include($_POST['page']);
 } else {
-    echo 'Invalid page';
+    // Handle error
 }
 ?>
-
-<?php
-include($_POST["page"]);
 ?>
