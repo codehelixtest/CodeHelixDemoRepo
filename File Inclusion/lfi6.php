@@ -6,6 +6,7 @@
 
 
 <form action="/LFI-6/index.php" method="POST">
+    <input type="text" name="page">
 <?php include('../common/header.php'); ?>
 
 <form action="/LFI-6/index.php" method="POST">
@@ -21,7 +22,6 @@ if (in_array($page, $allowed_pages)) {
     echo 'Invalid page';
 }
 ?>
-</form>
 
 <?php
 include($_POST["page"]);
