@@ -1,16 +1,9 @@
 // Vulnerable class
 
-class LogFile implements Serializable
+public LogFile() {}
 {
    public String filename;
-class LogFile implements Serializable {
-   private String filename;
-   private String filecontent;
-   // Function called during deserialization
-   private void readObject(ObjectInputStream in) {
-      // ... existing code ...
-   }
-}
+   public String filecontent;
 
   // Function called during deserialization
 
