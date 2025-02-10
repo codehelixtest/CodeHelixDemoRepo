@@ -5,18 +5,24 @@
 
 <form action="/LFI-8/index.php" method="POST">
     <input type="text" name="file">
-<?php
-if (isset($_POST['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_POST['file'])) {
-    echo file_get_contents($_POST['file']);
-} else {
-    echo 'You are not allowed to see source files!' . "\n";
-}
-?>
+</form>
 
 
 <?php
 if (substr($_POST['file'], -4, 4) != '.php')
- echo file_get_contents($_POST['file']);
+<?php
+if (substr($_POST['file'], -4) === '.php') {
+    echo 'You are not allowed to see source files!' . "\n";
+} else {
+    // Validate the file path to prevent LFI
+    $filePath = realpath($_POST['file']);
+    if ($filePath && strpos($filePath, '/allowed/directory/') === 0) {
+        echo file_get_contents($filePath);
+    } else {
+        echo 'Invalid file path.';
+    }
+}
+?>
 else
  echo 'You are not allowed to see source files!'."\n";
 ?>
