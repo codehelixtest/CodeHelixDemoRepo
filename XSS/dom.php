@@ -17,15 +17,17 @@ require_once('../_helpers/strip.php');
         script.src = someObject.url;
         document.body.appendChild(script);
      };
+    </script>
 <?php
 require_once('../_helpers/strip.php');
+$name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
 ?>
 <html>
   <head>
   </head>
   <body>
     <p>
-      Hi, <?= htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8'); ?>
+      Hi, <?= $name; ?>
     </p>
     <script>
       window.onload = function(){
@@ -37,5 +39,4 @@ require_once('../_helpers/strip.php');
     </script>
   </body>
 </html>
-  </body>
 </html>
