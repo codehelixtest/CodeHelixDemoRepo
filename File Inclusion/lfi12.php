@@ -1,9 +1,9 @@
 <!-- from http://hakipedia.com/index.php/Local_File_Inclusion -->
 <?php     include("../common/header.php");   ?>
 
-<?php include($_GET['stylepath']); ?>
+<?php hint("not everything you need to play with is in a text field"); ?>
 
-<form action="/LFI-12/index.php" method="GET">
+<?php include($_GET['stylepath']); ?> // Ensure CSRF protection is implemented and validate user input.
     <input type="text" name="file">
     <input type="hidden" name="style" name="stylepath">
 </form>
