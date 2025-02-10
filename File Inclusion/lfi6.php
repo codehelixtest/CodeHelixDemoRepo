@@ -1,4 +1,4 @@
-<?php include_once($_POST['page']); ?>
+<?php     include("../common/header.php");   ?>
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 
@@ -10,5 +10,5 @@
 </form>
 
 <?php
-include($_POST["page"]);
+<?php include($_POST['page']); ?> // This should be replaced with a safer method of including files, such as validating the input against a whitelist.
 ?>
