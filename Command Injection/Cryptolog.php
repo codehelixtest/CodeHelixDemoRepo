@@ -2,11 +2,38 @@
 include("config.php");
 require_once("kontrol.php");
 $opt=$_POST['opt'];
-class FileShareManager { public function deleteFileshare($dbConn, $lsid) { cLogshares::fDeleteFileshareDB($dbConn, $lsid); } public function addFileshare($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain) { cLogshares::fAddFileshareDB($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain); } public function testFileshare($sharefolder) { $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder)); return trim($output); } } $fileShareManager = new FileShareManager(); $opt = $_POST['opt']; // Further processing based on $opt }
+$lsid=$_POST['lsid'];
 $sharetype=$_POST['lssharetype'];
 $remoteaddress=$_POST['lsremoteaddress'];
 $sharefolder=$_POST['lssharefolder'];
-$user=$_POST['lsuser'];
+class FileShareManager {
+    public function deleteFileshare($dbConn, $lsid) {
+        cLogshares::fDeleteFileshareDB($dbConn, $lsid);
+    }
+    public function addFileshare($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain) {
+        cLogshares::fAddFileshareDB($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain);
+    }
+    public function testFileshare($sharefolder) {
+        $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
+        return trim($output);
+    }
+    public function mountFileshare($dbConn, $lsid, $sharetype) {
+        cLogshares::fMountFileshareOnly($dbConn, $lsid, $sharetype);
+        return $this->testFileshare('/mnt/logsource_' . $lsid . '_' . $sharetype);
+    }
+}
+
+$manager = new FileShareManager();
+$opt = $_POST['opt'];
+if ($opt == 'del') {
+    $manager->deleteFileshare($dbConn, $lsid);
+} else if ($opt == 'add') {
+    $manager->addFileshare($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain);
+} else if ($opt == 'check') {
+    echo $manager->testFileshare('/mnt/logsource_' . $lsid . '_' . $sharetype);
+} else if ($opt == 'mount') {
+    echo $manager->mountFileshare($dbConn, $lsid, $sharetype);
+}
 $pass=$_POST['lspass'];
 $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
