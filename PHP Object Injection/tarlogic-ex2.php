@@ -14,12 +14,9 @@ class File {
 class GiveFlag extends File {
   public $offset = 23;
   public function innocent() {
-    $stuff = fopen("flag.txt", "r");
+$input = isset($argv[1]) ? $argv[1] : ''; if (isValidInput($input)) { unserialize($input); }
     fseek($stuff, $this->offset);
-$filename = 'flag.txt';
-$stuff = fopen($filename, 'r');
-fseek($stuff, $this->offset);
-print fread($stuff, filesize($filename));
+    print fread($stuff, filesize("flag.txt"));
   }
 }
 class entry {
