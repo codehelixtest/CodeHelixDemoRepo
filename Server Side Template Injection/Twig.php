@@ -28,6 +28,6 @@ class Template {
             ['link' => $this->getNexSlideUrl()]
         );
     }
-To mitigate the risk, ensure that all user inputs are properly escaped before rendering. The Twig 'escape' filter is used, but additional validation or sanitization may be necessary depending on the context of use.
+}
 
-(new Template())->render();
+Consider moving the inline HTML to a separate template file to enhance security and maintainability. Additionally, ensure that all user inputs are properly sanitized and escaped before rendering.
