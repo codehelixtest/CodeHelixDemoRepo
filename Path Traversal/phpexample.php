@@ -14,7 +14,7 @@ $path = $UploadDir . $file;
 if (!is_file($path))
   die();
 
-if (!preg_match('/^[a-zA-Z0-9._-]+$/', $file)) die();
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: public');
 header('Content-Disposition: inline; filename="' . basename($path) . '";');
 header('Content-Transfer-Encoding: binary');
