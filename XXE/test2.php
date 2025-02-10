@@ -2,8 +2,8 @@
 libxml_disable_entity_loader (false);
 $xmlfile = file_get_contents('php://input');
 $dom = new DOMDocument();
-$dom->loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);
-$dom->loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);
+$dom->loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD | LIBXML_NOERROR | LIBXML_NOWARNING); libxml_disable_entity_loader(true);
+$info = simplexml_import_dom($dom);
 $name = $info->name;
 $tel = $info->tel;
 $email = $info->email;
