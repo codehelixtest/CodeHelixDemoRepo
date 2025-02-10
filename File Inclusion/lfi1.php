@@ -3,16 +3,22 @@
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php hint("will include the arg specified in the GET parameter \"page\""); ?>
 
+<form action="/LFI-1/index.php" method="GET">
 <?php include('../common/header.php'); ?>
 
+<form action="/LFI-1/index.php" method="GET">
+    <input type="text" name="page">
+</form>
+
 <?php
-if (isset($_GET['page']) && preg_match('/^[a-zA-Z0-9_-]+$/', $_GET['page'])) {
-    include($_GET['page']);
+$page = basename($_GET['page']); // Sanitize input
+$allowed_pages = ['home.php', 'about.php']; // Define allowed pages
+if (in_array($page, $allowed_pages)) {
+    include($page);
 } else {
-    // Handle error or default case
+    echo 'Invalid page.';
 }
 ?>
-    <input type="text" name="page">
 </form>
 
 <?php
