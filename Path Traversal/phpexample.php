@@ -3,7 +3,7 @@
 
 $UploadDir = '/var/www/';
 
-if (!(isset($_GET['file'])))
+$file = basename($_GET['file']); // Use basename to prevent path traversal
   die();
 
 
@@ -18,8 +18,7 @@ header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: public');
 header('Content-Disposition: inline; filename="' . basename($path) . '";');
 header('Content-Transfer-Encoding: binary');
-$file = basename($_GET['file']); // Use basename to prevent path traversal
-$path = $UploadDir . $file;
+header('Content-Length: ' . filesize($path));
 
 $handle = fopen($path, 'rb');
 
