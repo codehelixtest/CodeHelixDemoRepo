@@ -1,13 +1,13 @@
 <?php     include("../common/header.php");   ?>
 <!-- from http://www.ush.it/2009/02/08/php-filesystem-attack-vectors/ -->
 
-<?php hint("will include the arg specified in the GET parameter \"library\", appends .php to end, escape with NULL byte %00"); ?>
+<?php include('../common/header.php'); ?>
 
 <form action="/LFI-2/index.php" method="GET">
     <input type="text" name="library">
 </form>
 
 <?php
-<?php include('includes/' . basename($_GET['library']) . '.php'); ?>
+include("includes/".$_GET['library'].".php"); 
 ?>
 
