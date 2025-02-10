@@ -9,6 +9,7 @@ require_once('../_helpers/strip.php');
   <body>
     <p>
       Hi, <?= $_GET['name']; ?>
+    </p>
 <?php
 require_once('../_helpers/strip.php');
 $name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
@@ -30,7 +31,6 @@ $name = htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
     </script>
   </body>
 </html>
-    <script>
       window.onload = function(){
         let someObject = window.someObject || {};
         let script = document.createElement('script');
