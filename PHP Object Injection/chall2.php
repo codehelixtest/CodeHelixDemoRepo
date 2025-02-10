@@ -8,8 +8,8 @@ class Example2
    }
 
    function __wakeup()
+   {
 function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
-      if (isset($this->hook)) eval($this->hook);
    }
 }
 
