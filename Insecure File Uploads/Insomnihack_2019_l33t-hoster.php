@@ -1,10 +1,10 @@
 <?php
-$source = filter_input(INPUT_GET, 'source', FILTER_SANITIZE_STRING); if ($source) die(highlight_file(__FILE__));
+if (isset($_GET["source"]))
     die(highlight_file(__FILE__));
 
 session_start();
 
-if (!isset($_SESSION["home"])) {
+$source = filter_input(INPUT_GET, 'source', FILTER_SANITIZE_STRING); if ($source) die(highlight_file(__FILE__));
     $_SESSION["home"] = bin2hex(random_bytes(20));
 }
 $userdir = "images/{$_SESSION["home"]}/";
