@@ -6,6 +6,7 @@
 
 
 <form action="/LFI-7/index.php" method="POST">
+    <input type="text" name="library">
 <?php include('../common/header.php'); ?>
 
 <form action="/LFI-7/index.php" method="POST">
@@ -13,12 +14,13 @@
 </form>
 
 <?php
-if (isset($_POST['library'])) {
-    $library = basename($_POST['library']); // Sanitize input
-    include("includes/" . $library . ".php");
+$library = basename($_POST['library']); // Sanitize input
+if (file_exists('includes/' . $library . '.php')) {
+    include('includes/' . $library . '.php');
+} else {
+    // Handle error
 }
 ?>
-</form>
 
 <?php
 include("includes/".$_POST['library'].".php"); 
