@@ -41,11 +41,11 @@ if (isset($_POST["upload"])) {
     }
 
     if (count($parts) === 0) {
-if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { throw new Exception('File upload error.'); }
+        die("lol filename is empty");
     }
 
     if (in_array($ext, $disallowed_ext, TRUE)) {
-        die("lol nice try, but im not stupid dude...");
+if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { error_log('File upload error'); die('An error occurred during file upload. Please try again.'); }
     }
 
     $image = file_get_contents($tmp_name);
