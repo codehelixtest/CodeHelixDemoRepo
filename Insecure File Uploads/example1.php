@@ -3,20 +3,19 @@
 if( isset( $_POST[ 'Upload' ] ) ) {
 	// Where are we going to be writing to?
 	$target_path  = DVWA_WEB_PAGE_TO_ROOT . "hackable/uploads/";
-$allowed_file_types = ['image/jpeg', 'image/png', 'image/gif'];
-if (in_array($_FILES['uploaded']['type'], $allowed_file_types) && $_FILES['uploaded']['size'] < 2000000) {
-    // Proceed with the upload
-    if (!move_uploaded_file($_FILES['uploaded']['tmp_name'], $target_path)) {
-        $html .= '<pre>Your image was not uploaded.</pre>';
-    } else {
-        $html .= "<pre>{$target_path} successfully uploaded!</pre>";
-    }
-} else {
-    $html .= '<pre>Invalid file type or size too large.</pre>';
-}
+	$target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
 
 	// Can we move the file to the upload folder?
-	if( !move_uploaded_file( $_FILES[ 'uploaded' ][ 'tmp_name' ], $target_path ) ) {
+$fileType = pathinfo($_FILES['uploaded']['name'], PATHINFO_EXTENSION);
+if (!in_array($fileType, ['jpg', 'png', 'gif'])) {
+    $html .= '<pre>Invalid file type.</pre>';
+    exit;
+}
+if ($_FILES['uploaded']['size'] > 2000000) { // Limit file size to 2MB
+    $html .= '<pre>File is too large.</pre>';
+    exit;
+}
+move_uploaded_file($_FILES['uploaded']['tmp_name'], $target_path);
 		// No
 		$html .= '<pre>Your image was not uploaded.</pre>';
 	}
