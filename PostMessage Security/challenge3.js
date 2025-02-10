@@ -14,7 +14,7 @@ function send_message(destination) {
 }
 
 function get_domain() {
-	var url = window.location.href
+message = document.getElementById('message').value;
 	var arr = url.split("/");
 	return arr[0] + "//" + arr[2]
 }
