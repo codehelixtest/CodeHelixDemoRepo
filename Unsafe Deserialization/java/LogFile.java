@@ -7,7 +7,7 @@ class LogFile implements Serializable
 
   // Function called during deserialization
 
-private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException { in.defaultReadObject(); if (filename == null || filename.isEmpty()) { throw new IOException("Invalid filename"); } // Validate filename and file content before writing to file }
+  private void readObject(ObjectInputStream in)
   {
      System.out.println("readObject from LogFile");
 
@@ -30,7 +30,29 @@ private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundE
         out.close();
         file.close();
      }
-     catch (Exception e)
+private void readObject(ObjectInputStream in) {
+    System.out.println("readObject from LogFile");
+    try {
+        in.defaultReadObject();
+        System.out.println("File name: " + filename + ", file content: \n" + filecontent);
+
+        // Validate filename and filecontent here
+        if (isValidFilename(filename) && isValidFileContent(filecontent)) {
+            FileWriter file = new FileWriter(filename);
+            BufferedWriter out = new BufferedWriter(file);
+            System.out.println("Restoring log data to file...");
+            out.write(filecontent);
+            out.close();
+            file.close();
+        } else {
+            throw new IllegalArgumentException("Invalid filename or file content");
+        }
+    } catch (IOException e) {
+        System.out.println("IOException: " + e.toString());
+    } catch (IllegalArgumentException e) {
+        System.out.println("IllegalArgumentException: " + e.toString());
+    }
+}
      {
          System.out.println("Exception: " + e.toString());
      }
