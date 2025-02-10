@@ -11,9 +11,9 @@ class Example2
    {
       if (isset($this->hook)) eval($this->hook);
    }
-function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
+}
 
-// some PHP code...
+function __wakeup() { if (isset($this->hook)) { throw new Exception('Invalid hook'); } }
 
 $user_data = unserialize($_COOKIE['data']);
 
