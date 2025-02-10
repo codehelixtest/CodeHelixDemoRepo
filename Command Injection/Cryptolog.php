@@ -12,9 +12,9 @@ $domain=$_POST['lsdomain'];
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$dbConn) die ("Out of service");
 mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
-require_once('config.php');
+include("classes/logshares_class.php");
 if($opt=='del')
-{
+if($opt=='del') { cLogshares::fDeleteFileshareDB($dbConn,$lsid); }
   cLogshares::fDeleteFileshareDB($dbConn,$lsid);
 }
 else if($opt=='add')
