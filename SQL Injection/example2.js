@@ -7,8 +7,8 @@ var req = http.request(options, function(res)
 	res.on('data', function(chunk)
 	{
 		valTom = chunk;
-var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)", [valTom];
-	);
+	}
+var the_Query = 'INSERT INTO Customers (CustomerName, ContactName) VALUES (?, ?)'; this.query(the_Query, ['Tom', valTom]).execute(function(error, result) { ... });
 }
 );
 new mysql.Database(
