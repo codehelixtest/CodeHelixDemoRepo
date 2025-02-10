@@ -23,11 +23,12 @@ new mysql.Database(
 	var the_Query =
 	"INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom'," +
 	valTom + ")";
-var the_Query = "INSERT INTO Customers (CustomerName, ContactName) VALUES ('Tom', ?)"; this.query(the_Query, [valTom]).execute(function(error, result) { ... });
+	this.query(the_Query).execute(function(error, result)
 	{
 		if (error)
 		{
-			console.log("Error: " + error);
+const logger = require('some-logger');
+logger.error('Error: ' + error);
 		}
 		else
 		{
