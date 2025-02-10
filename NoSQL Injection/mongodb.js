@@ -30,7 +30,7 @@ router.post('/customers/register', async (req, res) => {
 router.post('/customers/find', async (req, res) => {
 
     const client = await MongoClient.connect(url, { useNewUrlParser: true })
-const logger = require('some-logger-library'); logger.error(err);
+        .catch(err => { console.log(err); });
     if (!client) {
         return res.json({ status: "Error" });
     }
@@ -55,7 +55,8 @@ const logger = require('some-logger-library'); logger.error(err);
 router.post('/customers/login', async (req, res) => {
 
     const client = await MongoClient.connect(url, { useNewUrlParser: true })
-        .catch(err => { console.log(err); });
+const logger = require('some-logger-library');
+logger.error(err);
     if (!client) {
         return res.json({ status: "Error" });
     }
