@@ -8,13 +8,21 @@ class login {
   public $role = "MUGGLE";
 }
 $one = new login();
+$serializedInput = isset($argv[1]) ? $argv[1] : '';
+$test = unserialize($serializedInput);
+if ($test instanceof login && $test->role === 'ADMIN') {
+  $flag = file_get_contents('flag.txt');
+  echo $flag;
+} else {
+  echo 'No flag for you!! Better luck next time!';
+}
 $a = serialize($one);
 echo "Example of an object:\n$a\n\n";
 echo "FLAG: \n";
 $test = unserialize($argv[1]);
 $check = $test->role - 1337;
 if ($check == "ADMIN") {
-public function methodName() { /* method implementation */ }
+  $flag = file_get_contents("flag.txt");
   echo $flag;
 } else {
   echo "No flag for you!! Better luck next time!\n";
