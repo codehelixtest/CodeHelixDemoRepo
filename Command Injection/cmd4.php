@@ -1,6 +1,8 @@
 <?php     include("../common/header.php");   ?>
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
-<?php  hint("will exec 'whois' with the arg specified in the POST parameter \"domain\""); ?>
+<?php
+    system escapeshellcmd($_POST['domain']);
+ ?>
 
 <form action="/CMD-4/index.php" method="POST">
     <input type="text" name="domain">
@@ -8,9 +10,6 @@
 
 <pre>
 <?php
-<?php
-    $domain = escapeshellarg($_POST['domain']);
-    system('whois ' . $domain);
-?>
+    system("whois " . $_POST["domain"]);
  ?>
 </pre>
