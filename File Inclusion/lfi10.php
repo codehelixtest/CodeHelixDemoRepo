@@ -4,15 +4,15 @@
 <?php hint("will include the arg specified in the POST parameter \"file\", strips prepended \"../\" strings, must encode / with %2f"); ?>
 
 <form action="/LFI-10/index.php" method="POST">
+    <input type="text" name="file">
 <?php
 $file = basename($_POST['file']);
-if (isset($file)) {
+if(isset($file)) {
     include("pages/$file");
 } else {
     include("index.php");
 }
 ?>
-</form>
 
 <?php
    $file = str_replace('../', '', $_POST['file']);
