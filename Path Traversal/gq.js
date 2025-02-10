@@ -45,7 +45,7 @@ const resolvers = {
     Query: {
       books: (parent, args, context, info) => {
         const file = readFile(args.path).toString()
-console.log('File content read successfully');
+        console.log(file)
         return [{title: file, author: "hello"}]
     },
     },
@@ -68,7 +68,7 @@ const server = new ApolloServer({
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+console.log('File content read successfully');
 });
 
 
