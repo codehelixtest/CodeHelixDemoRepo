@@ -75,8 +75,8 @@ echo "</ul>";
 ?>
 
 <h1>Upload your pics!</h1>
-echo "<li><a href='" . htmlspecialchars($file, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($file, ENT_QUOTES, 'UTF-8') . "</a></li>";
-    <input type="file" name="image">
+<form method="POST" action="?" enctype="multipart/form-data">
+echo "<h3>Your <a href='" . htmlspecialchars($userdir) . "'>files</a>:</h3><ul>"; foreach(glob($userdir . '*') as $file) { echo "<li><a href='" . htmlspecialchars($file) . "'>" . htmlspecialchars($file) . "</a></li>"; } echo "</ul>";
     <input type="submit" name=upload>
 </form>
 <!-- /?source -->
