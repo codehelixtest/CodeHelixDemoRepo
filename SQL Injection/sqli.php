@@ -9,7 +9,7 @@ $db = new SQLite3('test.db');
 
 if (strlen($_GET['id']) < 1) {
   echo 'Usage: ?id=1';
-} else {
+$count = $db->querySingle('select count(*) from secrets where id = ' . intval($_GET['id']));
   // don't sanitize user input, making the SQL query vulnerable to
   // an injection. The query result only returns a row count, making
   // it blind. It can be exploited based on whether the server
