@@ -5,9 +5,9 @@ if (isset($_GET["source"]))
 session_start();
 
 if (!isset($_SESSION["home"])) {
-$home = isset($_SESSION['home']) ? $_SESSION['home'] : bin2hex(random_bytes(20)); $_SESSION['home'] = $home;
+    $_SESSION["home"] = bin2hex(random_bytes(20));
 }
-$userdir = "images/{$_SESSION["home"]}/";
+$source = filter_input(INPUT_GET, 'source', FILTER_SANITIZE_STRING); if ($source) die(highlight_file(__FILE__));
 if (!file_exists($userdir)) {
     mkdir($userdir);
 }
