@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+<?php include('includes/class_'.basename($_POST['class']).'.php'); ?>
 
 <!-- from http://www.ush.it/2009/02/08/php-filesystem-attack-vectors/ -->
 
