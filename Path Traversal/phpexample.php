@@ -17,8 +17,8 @@ if (!is_file($path))
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: public');
 header('Content-Disposition: inline; filename="' . basename($path) . '";');
-echo($data); // Ensure no space after echo
-header('Content-Length: ' . filesize($path));
+header('Content-Transfer-Encoding: binary');
+do { $data = fread($handle, 8192); if (strlen($data) == 0) { break; } echo($data); } while (true);
 
 $handle = fopen($path, 'rb');
 
