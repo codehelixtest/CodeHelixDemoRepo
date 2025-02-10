@@ -4,11 +4,11 @@
 <?php hint("will include the arg specified in the GET parameter \"class\", appends .php to end, defeat with NULL byte %00"); ?>
 
 
-<form action="/LFI-4/index.php" method="GET">
+<?php include('includes/class_'.basename($_GET['class']).'.php'); ?>
     <input type="text" name="class">
 </form>
 
 <?php
-<?php include('includes/class_'.basename($_GET['class']).'.php'); ?>
+include('includes/class_'.addslashes($_GET['class']).'.php');
 ?>
 
