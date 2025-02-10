@@ -4,7 +4,7 @@ var out;
 var valTom;
 var req = http.request(options, function(res)
 {
-	res.on('data', function(chunk)
+var req = http.request(options, function(res) { res.on('data', function(chunk) { valTom = chunk; }); });
 	{
 		valTom = chunk;
 	}
@@ -27,8 +27,7 @@ new mysql.Database(
 	{
 		if (error)
 		{
-const logger = require('some-logger');
-logger.error('Error: ' + error);
+			console.log("Error: " + error);
 		}
 		else
 		{
