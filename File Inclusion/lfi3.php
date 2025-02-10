@@ -5,14 +5,21 @@
 
 
 <form action="/LFI-3/index.php" method="GET">
+    <input type="text" name="file">
+<?php include('../common/header.php'); ?>
+
+<form action="/LFI-3/index.php" method="GET">
+    <input type="text" name="file">
+</form>
+
 <?php
-if (isset($_GET['file']) && preg_match('/^[a-zA-Z0-9_\-]+\.php$/', $_GET['file'])) {
+$allowed_files = ['allowed_file1.php', 'allowed_file2.php']; // Define allowed files
+if (in_array($_GET['file'], $allowed_files)) {
     echo file_get_contents($_GET['file']);
 } else {
-    echo 'Invalid file specified!';
+    echo 'You are not allowed to see source files!' . "\n";
 }
 ?>
-</form>
 
 
 <?php
