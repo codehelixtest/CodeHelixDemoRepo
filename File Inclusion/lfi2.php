@@ -3,6 +3,7 @@
 
 <?php hint("will include the arg specified in the GET parameter \"library\", appends .php to end, escape with NULL byte %00"); ?>
 
+<form action="/LFI-2/index.php" method="GET">
 <?php include('../common/header.php'); ?>
 <form action="/LFI-2/index.php" method="GET">
     <input type="text" name="library">
@@ -15,7 +16,6 @@ if (file_exists('includes/' . $library . '.php')) {
     // Handle error
 }
 ?>
-    <input type="text" name="library">
 </form>
 
 <?php
