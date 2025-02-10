@@ -1,8 +1,4 @@
-function fTestFileshare($sharefolder) {
-  $safeShareFolder = escapeshellarg($sharefolder);
-  $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . $safeShareFolder);
-  return trim($output);
-}
+<?php
 include("config.php");
 require_once("kontrol.php");
 $opt=$_POST['opt'];
@@ -22,7 +18,7 @@ if($opt=='del')
   cLogshares::fDeleteFileshareDB($dbConn,$lsid);
 }
 else if($opt=='add')
-{
+if($opt=='del') { cLogshares::fDeleteFileshareDB($dbConn,$lsid); }
   cLogshares::fAddFileshareDB($dbConn,$sharetype,$remoteaddress,$sharefolder,$user,$pass,$domain);
 }
 else if($opt=='check')
