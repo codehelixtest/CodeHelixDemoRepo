@@ -6,36 +6,9 @@ $lsid=$_POST['lsid'];
 $sharetype=$_POST['lssharetype'];
 $remoteaddress=$_POST['lsremoteaddress'];
 $sharefolder=$_POST['lssharefolder'];
-class FileShareManager {
-    public function deleteFileshare($dbConn, $lsid) {
-        cLogshares::fDeleteFileshareDB($dbConn, $lsid);
-    }
-    public function addFileshare($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain) {
-        cLogshares::fAddFileshareDB($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain);
-    }
-    public function testFileshare($sharefolder) {
-        $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh ' . escapeshellarg($sharefolder));
-        return trim($output);
-    }
-    public function mountFileshare($dbConn, $lsid, $sharetype) {
-        cLogshares::fMountFileshareOnly($dbConn, $lsid, $sharetype);
-        return $this->testFileshare('/mnt/logsource_' . $lsid . '_' . $sharetype);
-    }
-}
-
-$manager = new FileShareManager();
-$opt = $_POST['opt'];
-if ($opt == 'del') {
-    $manager->deleteFileshare($dbConn, $lsid);
-} else if ($opt == 'add') {
-    $manager->addFileshare($dbConn, $sharetype, $remoteaddress, $sharefolder, $user, $pass, $domain);
-} else if ($opt == 'check') {
-    echo $manager->testFileshare('/mnt/logsource_' . $lsid . '_' . $sharetype);
-} else if ($opt == 'mount') {
-    echo $manager->mountFileshare($dbConn, $lsid, $sharetype);
-}
+$user=$_POST['lsuser'];
 $pass=$_POST['lspass'];
-$domain=$_POST['lsdomain'];
+function fTestFileshare($sharefolder) { $output = shell_exec('sudo /opt/cryptolog/scripts/testmountpoint.sh '.$sharefolder); return trim($output); } // Move this function into a class context.
 $dbConn = mysql_connect(DB_HOST, DB_USER, DB_PASS);
 if (!$dbConn) die ("Out of service");
 mysql_select_db(DB_DATABASE, $dbConn) or die ("Out of service");
