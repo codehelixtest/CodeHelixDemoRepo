@@ -28,7 +28,7 @@ $disallowed_ext = array(
 
 if (isset($_POST["upload"])) {
     if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { error_log('File upload error: ' . $_FILES['image']['error']); throw new Exception('File upload failed.'); }
+        die("yuuuge fail");
     }
 
     $tmp_name = $_FILES["image"]["tmp_name"];
@@ -41,7 +41,7 @@ if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { error_log('File upload error:
     }
 
     if (count($parts) === 0) {
-        die("lol filename is empty");
+if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) { throw new Exception('File upload error.'); }
     }
 
     if (in_array($ext, $disallowed_ext, TRUE)) {
