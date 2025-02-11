@@ -2,7 +2,12 @@
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php  hint("not everything you need to inject is in a text input field ..."); ?>
 
+<?php include("../common/header.php"); ?>
 <form action="/CMD-5/index.php" method="GET">
+    <input type="text" name="domain" required>
+    <input type="hidden" name="server" value="whois.publicinterestregistry.net">
+    <input type="submit" value="Submit">
+</form>
     <input type="text" name="domain">
     <input type="hidden" name="server" value="whois.publicinterestregistry.net">
 </form>
