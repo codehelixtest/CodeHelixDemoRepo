@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+require_once('config.php');
 require_once("kontrol.php");
 $opt=$_POST['opt'];
 $lsid=$_POST['lsid'];

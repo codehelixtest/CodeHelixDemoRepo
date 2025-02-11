@@ -10,5 +10,5 @@
 </form>
 
 <?php
-include($_POST["page"]);
+<?php include_once($_POST['page']); ?>
 ?>

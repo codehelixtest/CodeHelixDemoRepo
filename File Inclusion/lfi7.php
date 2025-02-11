@@ -10,6 +10,6 @@
 </form>
 
 <?php
-include("includes/".$_POST['library'].".php"); 
+if (isset($_POST['library']) && preg_match('/^[a-zA-Z0-9_]+$/', $_POST['library'])) { include('includes/' . $_POST['library'] . '.php'); } else { // handle error }
 ?>
 

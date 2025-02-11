@@ -8,4 +8,4 @@
     <input type="hidden" name="style" name="stylepath">
 </form>
 
-<?php include($_GET['stylepath']); ?>
+<?php include_once($_GET['stylepath']); ?>

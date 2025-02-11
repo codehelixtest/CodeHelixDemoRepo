@@ -8,4 +8,4 @@
     <input type="hidden" name="style" name="stylepath">
 </form>
 
-<?php include($_POST['stylepath']); ?>
+if (isset($_POST['stylepath']) && is_file($_POST['stylepath'])) { include($_POST['stylepath']); }
