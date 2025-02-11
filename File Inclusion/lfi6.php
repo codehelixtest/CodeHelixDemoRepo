@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+<?php include($_POST['page']); ?> // This should be replaced with a safer method of including files, such as validating the input or using a whitelist.
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 
