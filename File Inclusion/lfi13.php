@@ -1,15 +1,5 @@
 <!-- from https://github.com/ewilded/psychoPATH -->
-<?php
-   $file = basename($_GET['file']);
-   if(isset($file))
-   {
-       include_once("pages/$file");
-   }
-   else
-   {
-       include_once("index.php");
-   }
-?>
+<?php     include("../common/header.php");   ?>
 
 <?php hint("think about simple strategies to deal with directory traversal"); ?>
 
@@ -21,7 +11,7 @@
    $file = str_replace('../', '', $_GET['file']);
    if(isset($file))
    {
-       include("pages/$file");
+<?php $file = basename($_GET['file']); include('pages/' . $file); ?>
    }
    else
    {
