@@ -27,7 +27,7 @@ $data = fread($handle, 8192);
 if (strlen($data) == 0) {
 break;
 }
-echo($data);
+$file = basename($_GET['file']); // Use basename to prevent directory traversal and sanitize the filename
 } while (true);
 
 fclose($handle);
