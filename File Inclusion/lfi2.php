@@ -3,7 +3,19 @@
 
 <?php hint("will include the arg specified in the GET parameter \"library\", appends .php to end, escape with NULL byte %00"); ?>
 
+<?php include('../common/header.php'); ?>
 <form action="/LFI-2/index.php" method="GET">
+    <input type="text" name="library" required pattern="[a-zA-Z0-9_-]+">
+</form>
+
+<?php
+$library = basename($_GET['library']);
+if (file_exists('includes/' . $library . '.php')) {
+    include('includes/' . $library . '.php');
+} else {
+    echo 'File not found.';
+}
+?>
     <input type="text" name="library">
 </form>
 
