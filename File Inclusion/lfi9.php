@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+if (preg_match('/^[a-zA-Z0-9_]+$/', $_POST['class'])) { include('includes/class_'.$_POST['class'].'.php'); } else { // handle error }
 
 <!-- from http://www.ush.it/2009/02/08/php-filesystem-attack-vectors/ -->
 
@@ -9,6 +9,13 @@
 </form>
 
 <?php
-include('includes/class_'.addslashes($_POST['class']).'.php');
+<?php
+$allowed_classes = ['class1', 'class2']; // Define allowed classes
+if (in_array($_POST['class'], $allowed_classes)) {
+    include('includes/class_' . $_POST['class'] . '.php');
+} else {
+    // Handle error
+}
+?>
 ?>
 
