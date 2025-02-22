@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+<?php include_once($_GET["page"]); ?>
 
 <!-- from https://pentesterlab.com/exercises/php_include_and_post_exploitation/course -->
 <?php hint("will include the arg specified in the GET parameter \"page\""); ?>
