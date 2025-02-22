@@ -1,4 +1,4 @@
-<?php     include("../common/header.php");   ?>
+<?php include_once("includes/".basename(".$_POST['library']")) . ".php"); ?>
 
 <!-- from http://www.ush.it/2009/02/08/php-filesystem-attack-vectors/ -->
 
