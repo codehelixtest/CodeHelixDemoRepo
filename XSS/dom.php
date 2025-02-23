@@ -1,14 +1,14 @@
 <?php
 require_once('../_helpers/strip.php');
 ?>
-<html>
+<?php echo htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8'); ?>
   <!-- From https://portswigger.net/web-security/dom-based/dom-clobbering -->
   <head>
 
   </head>
   <body>
     <p>
-Hi, <?= htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8'); ?>
+      Hi, <?= $_GET['name']; ?>
     </p>
     <script>
       window.onload = function(){
