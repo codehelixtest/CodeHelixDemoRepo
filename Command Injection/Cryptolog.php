@@ -28,7 +28,7 @@ else if($opt=='check')
 else if($opt=='mount')
 {
   cLogshares::fMountFileshareOnly($dbConn,$lsid,$sharetype);
-  echo cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype);
+echo htmlspecialchars(cLogshares::fTestFileshare("/mnt/logsource_".$lsid."_".$sharetype), ENT_QUOTES, 'UTF-8');
 }
 
 function fTestFileshare($sharefolder)
