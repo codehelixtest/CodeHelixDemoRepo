@@ -13,7 +13,7 @@ public class XSSController {
 
     @GetMapping("/hello")
     ResponseEntity<String> hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new ResponseEntity<>("Hello World!" + name, HttpStatus.OK);
+return new ResponseEntity<>("Hello World!"+ org.springframework.web.util.HtmlUtils.htmlEscape(name), HttpStatus.OK);
     }
 
 }
