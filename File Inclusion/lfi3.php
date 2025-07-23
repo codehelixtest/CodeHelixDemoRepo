@@ -9,7 +9,7 @@
 </form>
 
 
-<?php
+    echo htmlspecialchars(file_get_contents($_GET['file']), ENT_QUOTES, 'UTF-8');
 if (substr($_GET['file'], -4, 4) != '.php')
  echo file_get_contents($_GET['file']);
 else
